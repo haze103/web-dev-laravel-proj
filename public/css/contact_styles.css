@@ -1,0 +1,315 @@
+* {
+    font-family: "DM Sans", sans-serif;
+}
+
+body {
+    background-color: #f8f8f2;
+}
+
+header {
+    background-color: #31511e;
+}
+
+.navbar {
+    background-color: #31511e !important;
+    top: 0 !important;
+    left: 0 !important;
+    width: 100% !important;
+    z-index: 1000 !important;
+    transition: top 0.3s ease-in-out !important;
+    font-family: "DM Sans", sans-serif !important;
+    vertical-align: middle;
+    padding: 20px 0;
+}
+
+.logo-name-nav {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-content: center;
+}
+
+.lyn {
+    margin-left: 100% !important;
+    font-family: "Archivo Black", sans-serif !important;
+    font-size: 2.41vw !important;
+    color: #ffffff !important;text-transform: uppercase !important; /* Ensure all uppercase */
+    text-shadow: 2px 2px 0px rgba(0, 0, 0, .4) !important;
+    line-height: 1;
+}
+
+.q-logo {
+    font-family: "Fredoka", sans-serif !important;
+    font-size: 3.50vw !important;
+    font-weight: 700 !important;
+    color: #f3f9db !important;
+    text-transform: uppercase !important; /* Ensure all uppercase */
+    text-shadow: 2px 2px 0px rgba(0, 0, 0, .4) !important;
+    line-height: 0.7;
+}
+
+/* Prevent color change on hover */
+.navbar-brand:hover,
+.navbar-brand:focus {
+    color: #ffffff !important; /* Keeps it white */
+}
+
+.navbar-nav {
+    margin-right: 100px !important; /* Moves the nav links away from the right */
+}
+
+.navbar-nav .nav-link {
+    color: #ffffff !important; /* Makes the color of the links white */
+    font-size: 16px !important;
+}
+
+.navbar .navbar-nav .nav-item {
+    display: inline-block;
+    list-style: none;
+    margin: 10px;
+}
+
+.navbar .navbar-nav .nav-item .nav-link { /*For underline effect on links in navbar*/
+    color: #fff;
+    text-decoration: none;
+    font-size: 14px;
+    position: relative;
+    padding-bottom: 5px; /* Adds spacing for underline */
+}
+
+.navbar .navbar-nav .nav-item .nav-link::after { /* Effects for hover on links in navbar*/
+    content: '';
+    width: 0; /* Start with no width */
+    height: 3px;
+    background: #fe4e1d;
+    position: absolute;
+    left: 0;  /* Align to left */
+    bottom: -6px; /* Position below the text */
+    transition: width 0.3s ease-in-out; /* Smooth underline effect */
+}
+
+/* Expand underline on hover */
+.navbar .navbar-nav .nav-item .nav-link:hover::after {
+    width: 70%;
+}
+
+.navbar-toggler[aria-expanded="true"] .navbar-brand {
+    color: #ffffff !important;
+}
+
+.header-msg {
+    text-align: center;
+    padding-bottom: 35px;
+}
+
+.header-msg .lyn {
+    font-size: 60px !important;
+    margin-left: 0 !important;
+    text-shadow: 3px 3px 0px rgba(0, 0, 0, .4) !important;
+    line-height: 1 !important;
+}
+
+.header-msg .q-logo {
+    font-size: 75px !important;
+    text-shadow: 3px 3px 0px rgba(0, 0, 0, .4) !important;
+    line-height: 0.8 !important;
+}
+
+.header-msg h3 {
+    font-size: 16px;
+    color: white;
+}
+
+main {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 5%;
+    padding: 3% 5% 2% 10%;
+    flex-wrap: wrap;
+}
+
+.contact-info {
+    flex: 2;
+    min-width: 300px;
+    max-width: 60%;
+    padding-bottom: 20px;
+}
+
+.contact-info h1 {
+    font-size: 45px;
+    font-weight: 700;
+    text-align: center;
+}
+
+.contact-number {
+    width: 80%;
+    margin: 0 auto 20px auto;
+    font-size: 1.1em;
+    font-weight: 500;
+    text-align: center;
+    border-collapse: collapse;
+}
+
+.contact-number td {
+    padding: 8px 20px;
+}
+
+#gmap-loc iframe {
+    border: 1px solid #000;
+    margin: 10px 0;
+    padding: 1px;
+}
+
+.contact-info h6 {
+    margin-top: 10px;
+    font-size: 0.9em;
+    color: #000;
+}
+
+.contact-lynq {
+    flex: 1;
+    min-width: 300px;
+    max-width: 35%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.contact-card-new, 
+.contact-card-existing, 
+.contact-card-partner {
+    border: 4px solid #31511e;
+    border-radius: 19px;
+    width: 65%;
+    padding: 20px;
+    margin: 10px 0;
+    box-sizing: border-box;
+}
+
+.contact-lynq h3 {
+    font-size: 20px;
+    margin-bottom: 10px;
+}
+
+.contact-lynq p {
+    font-size: 16px;
+    line-height: 1.5em;
+}
+
+.contact-lynq a {
+    color: #859f3d;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+.contact-lynq a:hover {
+    text-decoration: underline;
+    color: #31511e;
+}
+
+footer {
+    background-color: #a6bb7a;
+    min-height: 300px;
+    padding: 40px 15% 15px 15%;
+    text-align: center;
+    color: #000;
+}
+
+.footer-contacts {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 20px;
+    padding: 10px 10px 30px 10px;
+}
+
+.phone-number-footer .contact-number {
+    width: 100%;
+}
+
+.footer-icon {
+    font-size: 25px;
+    color: #000;
+}
+
+.email-footer a {
+    text-decoration: none;
+    color: #000;
+    font-size: 1.1em;
+}
+
+.socmed-footer h6 {
+    font-size: 20px;
+}
+
+.socmed-footer a img {
+  width: 38px;
+  height: 38px;
+  transition: transform 0.2s;
+}
+
+.socmed-footer a img:hover {
+  transform: scale(1.1);
+}
+
+footer p a {
+    font-size: 15px;
+    text-decoration: none;
+    color: #000;
+}
+
+
+@media (max-width: 1024px) {
+
+    main {
+        flex-direction: column;
+        padding: 15px;
+    }
+
+    .navbar {
+        padding-left: 20px;
+        padding-right: 20px;
+    }
+
+    .contact-info,
+    .contact-lynq {
+        max-width: 100%;
+        flex: 1 1 100%;
+    }
+
+    .contact-info h6 {
+        text-align: center;
+    }
+
+    .contact-card-new, 
+    .contact-card-existing, 
+    .contact-card-partner {
+        width: 80%;
+    }
+
+    .footer-contacts {
+        justify-content: center;
+        text-align: center;
+    }
+
+    .footer-contacts > div {
+        width: 100%;
+        max-width: 400px;
+    }
+
+    .socmed-footer a img {
+        width: 35px;
+        height: 35px;
+    }
+
+    .contact-number,
+    .contact-number thead,
+    .contact-number tbody,
+    .contact-number tr,
+    .contact-number td {
+        display: block;
+        width: 100%;
+    }
+}

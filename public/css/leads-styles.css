@@ -1,0 +1,1010 @@
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+/* ===========================
+   FONTS
+   =========================== */
+
+.dm-sans{
+  font-family: "DM Sans", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: normal;
+  font-style: normal;
+}
+
+.archivo-black-regular {
+  font-family: "Archivo Black", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.fredoka{
+  font-family: "Fredoka", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: normal;
+  font-style: normal;
+  font-variation-settings: "wdth" 100;
+}
+
+.raleway{
+  font-family: "Raleway", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: normal;
+  font-style: normal;
+}
+
+*{
+    padding: 0;
+    margin: 0;
+    list-style-type: none;
+    text-decoration: none;
+}
+
+/* ===========================
+   BODY
+   =========================== */
+
+body{
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    background-color: #f8f8f2;
+    /* color: #ffffff; */
+    overflow: hidden;
+}
+
+.navbar{
+    height: 70px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+}
+
+.logo-name-container{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-content: center;
+}
+
+.navbar-brand{
+    text-decoration: none;
+}
+
+.main-logo{
+    margin-left: 100px;
+    font-family: "Archivo Black", sans-serif;
+    font-size: 2.41vw;
+    text-transform: uppercase; /* Ensure all uppercase */
+    text-shadow: 1px 1px 0px #1d3112 ;
+    line-height: 1;
+    color: #31511e;
+}
+
+.special-q {
+    font-family: "Fredoka", sans-serif;
+    font-size: 3.2vw;
+    font-weight: 700;
+    text-transform: uppercase; /* Ensure all uppercase */
+    text-shadow: 2px 2px 0px #1d3112;
+    line-height: 0.8;
+    color: #31511e;
+}
+
+.search-bar{
+    display: flex;
+    position: fixed;
+    left: 28vw;
+    font-family: "DM Sans", sans-serif;
+    font-size: 1.5rem;
+    border: none;
+    background-color: #d9d9d9;
+    border: solid #d9d9d9;
+    border-radius: 2rem;
+}
+
+.search-bar input{
+    border: none;
+    border-radius: 2rem;
+    background-color: #d9d9d9;
+    padding: 0.5rem 0.5rem;
+}
+
+.search-bar span{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0 0.5rem;
+}
+
+.search-icon{
+    width: 20px;
+    height: 20px;
+    object-fit: cover;
+}
+
+.logout {
+    font-family: "DM Sans", sans-serif;
+    font-weight: bold;
+    text-decoration: none;
+    background-color: #ff3131;
+    color: #ffffff;
+    padding: 5px 10px;
+    border: none;
+    border-radius: 0.5rem;
+    transition: 0.2s ease-in-out;
+}
+
+.logout:hover{
+    background-color: #f79797;
+    cursor: pointer;
+}
+
+/* ===========================
+   SIDBAR
+   =========================== */
+
+.main{
+    display: flex; /* This is the key property */
+    height: 100vh;
+    margin: 0;
+}
+
+.side-bar{
+    display: flex;
+    flex-direction: column;
+    margin: 0;
+    margin-left: -4rem;
+    width: 365px;
+    height: 110%;
+    background-color: #31511e;
+    color: #ffffff;
+    border-radius: 1.5rem;
+}
+
+.side-menu{
+    width: 100%;
+    box-sizing: border-box;
+    padding: 3rem 0;
+}
+
+.side-menu ul{
+    display: flex;
+    flex-direction: column; 
+    justify-content: flex-start;
+    align-items: center;
+    width: 100%;
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+.side-menu ul li{
+    display: flex;
+    flex-direction: row;
+    justify-content: justify;
+    width: 100%;
+}
+
+.side-menu ul li img{
+    width: 30px;
+    height: 30px;
+    object-fit: contain;
+}
+
+.menu-item{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    text-align: justify;
+    gap: 1rem;
+    padding: 1rem 0;
+
+    background-color: #31511e;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.menu-item:hover{
+    background-color: #859f3d;
+}
+
+.menu-item:active{
+    background-color: #555;
+}
+
+.menu-item.current-page{
+    background-color: #859f3d;
+    color: #fff;
+    font-weight: bold;
+}
+
+.menu-item a{
+    font-family: "DM Sans", sans-serif;
+    font-weight: bold;
+    font-size: medium;
+    color: #ffffff;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+}
+
+/* ===========================
+   CONTENT
+   =========================== */
+
+.content{
+    font-family: "DM Sans", sans-serif;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    color: #31511e;
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    width: 100%;
+}
+
+.header h1{
+    width: 30vw;
+    padding-left: 1rem;
+}
+
+.header{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    gap: 1rem;
+    color: #31511e;
+    width: 100%;
+}
+
+.buttons{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 1.5rem;
+    width: 30vw;
+}
+
+.btn{
+    font-family: "DM Sans", sans-serif;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    border: solid #6a8b19;
+    border-radius: 0.5rem;
+    background-color: #6a8b19;
+    color: #ffffff;
+    padding: 0.4rem 0;
+    padding-right: 1rem;
+    gap: 1rem;
+    transition: 0.2s ease-in;
+}
+
+.btn span{
+    border-right: solid #ffffff;
+    padding: 0 1rem;
+    height: 100%;
+}
+
+.btn:hover{
+    background-color: #32410c;
+    cursor: pointer;
+}
+
+.settings-icon{
+    width: 30px;
+    height: 30px;
+    object-fit: cover;
+    display: inline-block; /* Essential for transforms and transitions on <a> */
+    transition: transform 0.3s ease-in-out; /* Smooth transition */
+}
+
+.settings-icon:hover {
+    transform: scale(1.3);
+}
+
+/* ===========================
+   TABLE
+   =========================== */
+
+.table-container{
+    display: flex;
+    width: 100%;
+    height: 100%;
+    min-height: 80vh;
+    background-color: #f8f8f2 !important;
+}
+
+.table{
+    width: 100%;
+    height: 90%;
+    border-collapse: collapse;
+    border-radius: 1rem;
+    margin: 0.5rem 1rem;
+}
+
+.table th, 
+.table td {
+    font-family: "DM Sans", sans-serif;
+    font-size: 1rem;
+    border: 1px solid #000;
+    padding: 8px;
+    text-align: center;
+    background-color: #f8f8f2 !important;
+}
+
+.table thead{
+    font-family: "DM Sans", sans-serif;
+    font-size: 1rem;
+}
+
+.btn-edit{
+    font-family: "DM Sans", sans-serif;
+    font-size: 1rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0.5rem 1rem;
+    border: none;
+    border-radius: 1rem;
+    background-color: #fea805;
+    color: #ffffff;
+    margin-bottom: 1rem;
+    transition: 0.3s ease-in-out;
+}
+
+.btn-edit:hover{
+    background-color: #ead5ae;
+    color: #000;
+    cursor: pointer;
+}
+
+.btn-delete{
+    font-family: "DM Sans", sans-serif;
+    font-size: 1rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0.5rem 1rem;
+    border: none;
+    border-radius: 1rem;
+    background-color: #ff3131;
+    color: #ffffff;
+    transition: 0.3s ease-in-out;
+}
+
+.btn-delete:hover{
+    background-color: #f8a1a1;
+    color: #000;
+    cursor: pointer;
+}
+
+/* ===========================
+   SIDEBAR - ADD LEADS
+   =========================== */
+body {
+    margin: 0;
+    font-family: "DM Sans", sans-serif;
+    display: flex; /* Helps to structure main content and sidebar */
+    min-height: 100vh;
+}
+
+/* Main Content Area - ensures it's not covered by the sidebar until active */
+.main-content {
+    flex-grow: 1; /* Allows it to take up available space */
+    padding: 20px;
+    box-sizing: border-box;
+    /* Add transition for blurring/scaling if you want that effect */
+    transition: filter 0.3s ease-in-out;
+}
+
+/* Header for the leads section */
+.header-section {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 20px;
+}
+
+.add-lead-button {
+    background-color: #6C9F28; /* Green from your image */
+    color: white;
+    border: none;
+    padding: 8px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    font-size: 1rem;
+    transition: background-color 0.3s ease;
+}
+.add-lead-button:hover {
+    background-color: #5a8a22; /* Slightly darker green on hover */
+}
+.add-lead-button .icon {
+    font-size: 1.2rem; /* Size for the plus sign */
+    font-weight: bold;
+}
+
+/* Settings link (from your previous question) */
+.settings-link {
+    display: inline-block;
+    padding: 8px;
+    border-radius: 4px;
+    background-color: transparent;
+    transition: background-color 0.3s ease-in-out;
+}
+.settings-link:hover {
+    background-color: #f0f0f0;
+}
+.settings-icon {
+    width: 24px; /* Adjust size as needed */
+    height: 24px;
+    vertical-align: middle; /* Align with text if any */
+}
+
+
+/* Sidebar Overlay */
+.sidebar-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent black */
+    z-index: 999; /* Below the sidebar, above main content */
+    opacity: 0; /* Initially hidden */
+    visibility: hidden; /* Initially hidden */
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+.sidebar-overlay.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+
+/* Sidebar Form Container */
+.sidebar-form {
+    font-family: "DM Sans", sans-serif;
+    position: fixed;
+    top: 0;
+    right: -400px; /* Initially off-screen to the right */
+    width: 400px; /* Adjust width as needed */
+    height: 100%;
+    background-color: #f8f8f2; /* Light background for the form */
+    box-shadow: -5px 0 15px rgba(0, 0, 0, 0.2);
+    z-index: 1000; /* Above everything else */
+    transition: right 0.3s ease-in-out; /* Smooth slide animation */
+    display: flex;
+    flex-direction: column;
+}
+
+.sidebar-form.active {
+    right: 0; /* Slide into view */
+}
+
+/* Sidebar Header */
+.sidebar-header {
+    font-family: "DM Sans", sans-serif;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 20px;
+    background-color: #f8f8f2; /* White header background */
+}
+
+.sidebar-header h2 {
+    font-family: "DM Sans", sans-serif;
+    margin: 0;
+    margin-top: 1rem;
+    margin-left: 2rem;
+    font-size: 1.4rem;
+    color: #31511e;
+}
+
+/* Specific styling for the green background field (Current User) */
+.upper-part{
+    display: flex;
+    flex-direction: column;
+    text-align: start;
+}
+.title-container{
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 14rem;
+}
+
+.hr-top{
+    width: 25rem;
+    display: flex;
+    justify-content: center;
+    padding: 5px;
+}
+
+.lower-part{
+    font-family: "DM Sans", sans-serif;
+    color: black;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    text-align: start;
+    gap: 1rem;
+}
+.current-user{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #b0c085; /* Light green from image */
+    border-color: #b0c085;
+    border-radius: 1rem;
+    color: #333;
+    padding: 0.5rem 3rem;
+}
+.current-user-field:focus {
+    box-shadow: none; /* No shadow on readonly field */
+}
+
+.close-sidebar-btn {
+    background: none;
+    border: none;
+    font-size: 2rem;
+    cursor: pointer;
+    color: #888;
+    line-height: 1; /* Prevent extra spacing */
+    padding: 0;
+    transition: color 0.2s ease;
+}
+.close-sidebar-btn:hover {
+    color: #333;
+}
+
+/* Sidebar Body - Form Fields */
+.sidebar-body {
+    flex-grow: 1;
+    padding: 20px; 
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end; 
+    box-sizing: border-box;
+}
+
+.form-group {
+    /* These properties will now work within the right-aligned sidebar-body */
+    display: flex;
+    flex-direction: row; /* Keep label and input on the same row */
+    align-items: center;
+    gap: 1.5rem;
+    width: 100%; /* Ensure each form-group takes full available width */
+    margin-bottom: 15px;
+    justify-content: flex-end; /* Pushes the label and input to the right within its 100% width */
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 0; /* Remove if you're using align-items: center */
+    width: 15rem; /* Fixed width for labels */
+    font-weight: bold;
+    color: #000000;
+    font-size: 0.9rem;
+    /* Optional: If labels are long, you might want text-align: right; here too */
+    text-align: right;
+}
+
+
+.form-group input[type="text"],
+.form-group input[type="number"],
+.form-group input[type="date"],
+.form-group select {
+    width: 28rem; 
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    box-sizing: border-box; /* Essential: includes padding/border in the defined width */
+    font-size: 1rem;
+    background-color: #d9d9d9;
+}
+
+.form-group .calendar-icon {
+    margin-left: -25px;
+    pointer-events: none;
+    z-index: 1;
+}
+
+.form-group input:focus,
+.form-group select:focus {
+    border-color: #a0a0a0;
+    outline: none;
+    box-shadow: 0 0 0 2px rgba(108, 159, 40, 0.2); /* Light green shadow */
+}
+
+/* Styling for select dropdown arrows (if you want custom ones) */
+.form-group select {
+    -webkit-appearance: none; /* Remove default arrow on WebKit browsers */
+    -moz-appearance: none; /* Remove default arrow on Firefox */
+    appearance: none; /* Remove default arrow */
+    background-image: url('data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22292.4%22%20height%3D%22292.4%22%3E%3Cpath%20fill%3D%22%23000000%22%20d%3D%22M287%2069.4a17.6%2017.6%200%200%200-13.2-6.4H18.6c-5%200-9.3%201.8-13.2%206.4-3.9%204.6-5.8%2010.5-5.8%2017.4%200%206.9%202%2012.8%205.8%2017.4l132%20132c4.1%204.1%209.1%206.1%2014.2%206.1s10.1-2%2014.2-6.1l132-132c3.9-4.5%205.8-10.4%205.8-17.4s-1.8-12.9-5.8-17.4z%22%2F%3E%3C%2Fsvg%3E');
+    background-repeat: no-repeat;
+    background-position: right 10px center;
+    background-size: 12px;
+    padding-right: 30px; /* Make space for the custom arrow */
+}
+.form-group .calendar-icon {
+    position: relative;
+    left: -30px; /* Position icon inside input */
+    pointer-events: none; /* Allow clicks to pass through to input */
+}
+
+
+/* Sidebar Footer */
+.sidebar-footer {
+    display: flex;
+    justify-content: flex-end; /* Align buttons to the right */
+    padding: 15px 20px;
+    border-top: 1px solid #eee;
+    background-color: #f8f8f2;
+    gap: 10px; /* Space between buttons */
+}
+.sidebar-footer button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: background-color 0.3s ease;
+}
+.cancel-btn {
+    background-color: #e0e0e0;
+    color: #555;
+}
+.cancel-btn:hover {
+    background-color: #d0d0d0;
+}
+.save-btn {
+    background-color: #6C9F28; /* Green */
+    color: white;
+}
+.save-btn:hover {
+    background-color: #5a8a22;
+}
+
+/* Optional: Blur/Scale main content when sidebar is active */
+.main-content.sidebar-active {
+    filter: blur(3px); /* Blurs the background */
+    /* transform: scale(0.98); */ /* Slightly shrinks the background */
+}
+
+/* In your style.css or leads-styles.css */
+.save-btn.update-btn {
+    /* Optional: Different background color or style for "Update" button */
+    background-color: #3498db; /* A blue color for update */
+}
+.save-btn.update-btn:hover {
+    background-color: #2980b9;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .sidebar-form {
+        width: 100%; /* Full width on smaller screens */
+        right: -100%;
+    }
+    .sidebar-form.active {
+        right: 0;
+    }
+}
+
+/* ===========================
+   MEDIA QUERIES
+   =========================== */
+
+/* Tablet and Smaller Desktops (768px to 1024px) */
+@media (max-width: 1024px) {
+    /* Navbar */
+    .main-logo {
+        margin-left: 50px; /* Reduce margin */
+        font-size: 2vw;
+    }
+    .special-q {
+        font-size: 2.8vw;
+    }
+    .search-bar {
+        left: 20vw;
+        width: 45vw;
+    }
+
+    /* Sidebar - adjust width */
+    .side-bar {
+        width: 250px; /* Slightly narrower sidebar */
+    }
+
+    /* Content */
+    .content {
+        padding: 0 0.5rem; /* Reduced padding */
+    }
+
+    .header h1 {
+        font-size: 1.8rem;
+    }
+
+    /* Table */
+    th, td {
+        font-size: 0.9rem; /* Smaller table font */
+        padding: 6px;
+    }
+}
+
+
+/* Small Tablets and Mobile (max-width: 768px) */
+@media (max-width: 768px) {
+    /* Body */
+    body {
+        flex-direction: column; /* Stack navbar and main content */
+    }
+
+    /* Navbar */
+    .navbar {
+        flex-wrap: wrap; /* Allow items to wrap */
+        justify-content: center; /* Center items when wrapped */
+        height: auto; /* Allow height to adjust */
+        padding: 10px;
+    }
+    .main-logo {
+        margin-left: 0; /* Remove left margin on mobile */
+        font-size: 5vw; /* Make logo scale more */
+        min-font-size: 20px;
+    }
+    .special-q {
+        font-size: 6vw; /* Make Q scale more */
+        min-font-size: 28px;
+    }
+    .search-bar {
+        position: static; /* Remove fixed positioning */
+        width: 90%; /* Take more width */
+        margin-top: 10px; /* Space from logo */
+        left: auto; /* Remove fixed left */
+        order: 3; /* Push search bar below logo and logout */
+        max-width: none; /* Remove max-width constraint */
+        min-width: unset; /* Remove min-width constraint */
+    }
+    .logout {
+        margin-left: auto; /* Push logout to the right if space allows */
+        order: 2; /* Place logout after logo, before search */
+    }
+
+    /* Main Layout */
+    .main {
+        flex-direction: column; /* Stack sidebar and content */
+        height: auto; /* Allow main to grow with content */
+    }
+
+    /* Sidebar - major changes for mobile */
+    .side-bar {
+        width: 100%; /* Full width */
+        height: auto; /* Adjust height based on content */
+        margin-left: 0; /* Remove negative margin */
+        border-radius: 0; /* No rounded corners on full width */
+        padding-bottom: 1rem; /* Add padding at the bottom */
+    }
+    .side-menu {
+        padding: 1rem 0; /* Reduce padding */
+    }
+    .menu-item {
+        padding: 0.7rem 0; /* Smaller padding */
+        font-size: 0.9rem; /* Smaller font size */
+    }
+    .side-menu ul li img {
+        width: 24px; /* Smaller icons */
+        height: 24px;
+    }
+    .menu-item a {
+        font-size: 0.9rem;
+    }
+
+    /* Content Area */
+    .content {
+        padding: 10px; /* Adjust padding */
+    }
+    .header {
+        flex-direction: column; /* Stack header elements */
+        align-items: flex-start; /* Align elements to the start */
+        gap: 0.5rem;
+        padding: 0.5rem 0;
+    }
+    .header h1 {
+        width: 100%; /* Full width */
+        text-align: center; /* Center align title */
+        font-size: 1.5rem; /* Smaller font size */
+    }
+    .buttons {
+        width: 100%; /* Full width */
+        justify-content: center; /* Center buttons */
+        gap: 0.8rem;
+    }
+    .btn {
+        padding: 0.3rem 0.5rem; /* Smaller padding for "Add Lead" */
+        font-size: 0.9rem;
+    }
+    .btn span {
+        padding: 0 0.8rem; /* Smaller padding for plus icon */
+    }
+    .settings-icon {
+        width: 24px; /* Smaller icon */
+        height: 24px;
+    }
+
+    /* Table (already has overflow-x: auto) */
+    .table {
+        font-size: 14px;
+        min-width: 400px;
+    }
+
+    .table th,
+    .table td {
+        font-size: 12px;
+        padding: 6px 4px;
+    }
+
+    .table td {
+        max-width: 120px;
+    }
+
+    /* Sidebar Form (already responsive to 100% width) */
+    .sidebar-form {
+        width: 100%;
+        right: -100%;
+    }
+    .sidebar-form.active {
+        right: 0;
+    }
+
+    /* Sidebar Form Details */
+    .sidebar-header h2 {
+        font-size: 1.2rem;
+        margin-left: 10px; /* Adjust left margin */
+    }
+    .upper-part {
+        align-items: flex-start; /* Align content to start */
+    }
+    .close-sidebar-btn {
+        top: 5px;
+        right: 5px;
+        font-size: 1.8rem;
+    }
+    .hr-top {
+        width: calc(100% - 10px); /* Adjust HR width */
+        margin: 10px 0;
+    }
+    .lower-part {
+        flex-direction: column; /* Stack 'Created By' elements */
+        align-items: flex-start; /* Align to start */
+        gap: 0.5rem;
+        padding-left: 10px;
+    }
+    .current-user {
+        padding: 0.4rem 1rem;
+        font-size: 0.8rem;
+    }
+    .sidebar-body {
+        padding: 10px;
+    }
+    .form-group {
+        flex-direction: column; /* Stack label and input vertically */
+        align-items: flex-start; /* Align items to the left */
+        gap: 0.5rem;
+        justify-content: flex-start; /* Adjust justification */
+        margin-bottom: 10px;
+    }
+    .form-group label {
+        width: 100%; /* Label takes full width */
+        text-align: left; /* Align label text to left */
+        font-size: 0.85rem;
+    }
+    .form-group input[type="text"],
+    .form-group input[type="number"],
+    .form-group input[type="date"],
+    .form-group select {
+        width: 100%; /* Inputs take full width */
+        max-width: none; /* Remove max-width constraint */
+        font-size: 0.9rem;
+    }
+    .form-group .calendar-icon {
+        left: -20px; /* Adjust icon position */
+    }
+    .sidebar-footer {
+        flex-direction: column; /* Stack buttons vertically */
+        padding: 10px;
+        gap: 8px;
+    }
+    .sidebar-footer button {
+        width: 100%; /* Buttons take full width */
+        max-width: none; /* Remove max-width constraint */
+        font-size: 0.9rem;
+    }
+}
+
+/* Very Small Mobile (max-width: 480px) */
+@media (max-width: 480px) {
+    /* Navbar */
+    .main-logo, .special-q {
+        font-size: 7vw; /* Even smaller font size for logo parts */
+    }
+    .logout {
+        font-size: 0.8rem;
+        padding: 4px 8px;
+    }
+
+    /* Sidebar Menu */
+    .menu-item {
+        font-size: 0.8rem;
+        padding: 0.5rem 0;
+    }
+    .side-menu ul li img {
+        width: 20px;
+        height: 20px;
+    }
+    .menu-item a {
+        font-size: 0.8rem;
+    }
+
+    /* Content Header */
+    .header h1 {
+        font-size: 1.3rem;
+    }
+    .btn {
+        font-size: 0.8rem;
+        padding: 0.2rem 0.4rem;
+    }
+    .btn span {
+        padding: 0 0.6rem;
+    }
+
+    /* Sidebar Form */
+    .sidebar-header h2 {
+        font-size: 1.1rem;
+    }
+    .current-user {
+        font-size: 0.75rem;
+        padding: 0.3rem 0.8rem;
+    }
+    .form-group label,
+    .form-group input,
+    .form-group select {
+        font-size: 0.8rem;
+    }
+    .sidebar-footer button {
+        font-size: 0.8rem;
+        padding: 8px 15px;
+    }
+
+    .table {
+        min-width: 290px;
+        display: block;
+        overflow-x: auto;
+        white-space: nowrap;
+    }
+
+    .table th,
+    .table td {
+        font-size: 12px;
+        padding: 6px 4px;
+    }
+
+    .table td {
+        max-width: 120px;
+    }
+}

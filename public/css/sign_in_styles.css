@@ -1,0 +1,276 @@
+* {
+    font-family: "DM Sans", sans-serif;
+}
+
+body {
+    background-color: #e6ecde;
+    display: flex;
+    flex-direction: column;
+}
+
+header {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    z-index: 10;
+}
+
+.fa-arrow-left {
+    font-size: 35px;
+    color: #fff;
+    margin-left: 50%;
+}
+
+.fa-arrow-left:hover {
+    transform: scale(1.25);
+    cursor: pointer;
+}
+
+main {
+    display: flex;
+    height: 100vh;
+    position: relative;
+    overflow: hidden;
+}
+
+.logo-container {
+    flex: 1;
+    background: #31511e;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    margin: 0;
+}
+
+.lyn {
+    display: inline-block;
+    font-size: 141px;
+    font-family: "Archivo Black", sans-serif;
+    text-shadow: 7px 7px 0px rgba(0, 0, 0, .4);
+    color: #f8f8f2;
+    transform: translateY(-85px);
+}
+
+.q-logo {
+    display: inline-block;
+    font-size: 169px;
+    font-family: "Fredoka", sans-serif;
+    text-shadow: 7px 7px 0px rgba(0, 0, 0, .4);
+    font-weight: 900;
+    transform: translateY(-75px);
+    margin-left: 10px;
+    color: #f3f9db;
+}
+
+.logo-container h1 {
+    letter-spacing: 4px;
+    margin: 0;
+}
+
+.logo-container h5 {
+    font-family: "Raleway", sans-serif;
+    font-weight: 300;
+    font-size: 20px;
+    margin-right: 17%;
+    color: rgba(255, 255, 255, .8);
+    transform: translateY(-90px);
+}
+
+.wave-img {
+    position: absolute;
+    left: 45%;
+    top: -100px;
+    transform: translateX(-50%) scale(1.25);
+    height: 100vh;
+    z-index: 2;
+    pointer-events: none;
+    object-fit: cover;
+}
+
+.sign-in-form {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 30px;
+}
+
+.sign-in-card {
+    background: #f8f8f2;
+    z-index: 2;
+    padding: 8% 10% 5% 10%;
+    border-radius: 19px;
+    width: 100%;
+    max-width: 650px;
+    margin-left: 10%;
+}
+
+.sign-in-card h1 {
+    text-align: center;
+    margin-bottom: 10%;
+    font-size: 35px;
+    font-weight: bold;
+    color: #000;
+}
+
+.sign-in-card label {
+    display: block;
+    margin-top: 15px;
+    margin-bottom: 5px;
+    font-size: 16px;
+    color: #000;
+}
+
+#email-add, #user-password {
+    width: 100%;
+    padding: 10px;
+    border: none;
+    background-color: #d9d9d9;
+}
+
+#remember-user {
+    margin-right: 6px;
+    margin-bottom: 5px;
+    vertical-align: middle;
+}
+
+#remember-user:hover {
+    cursor: pointer;
+}
+
+.sign-in-btn {
+    display: block;
+    width: 65%;
+    background-color: #004aad;
+    color: white;
+    padding: 10px;
+    border: none;
+    border-radius: 50px;
+    font-size: 18px;
+    font-weight: 480;
+    margin: 20px auto;
+}
+
+.sign-in-btn:hover {
+    background-color: #013c8a;
+}
+
+.sign-in-card h6 a {
+    font-size: 14px;
+    display: block;
+    margin-top: 15px;
+    font-weight: 400;
+    color: #004aad;
+    text-align: center;
+}
+
+.sign-in-card h6 a:hover {
+    color: #013c8a;
+    transform: scale(1.05);
+
+}
+
+.sign-in-card p {
+    font-size: 14px;
+    margin-top: 40px;
+    margin-bottom: 0;
+    text-align: center;
+}
+
+.sign-in-card p a {
+    color: #004aad;
+    text-decoration: none;
+}
+
+.sign-in-card p a:hover {
+    text-decoration: underline;
+}
+
+
+@media (max-width: 1140px) {
+    .lyn {
+        font-size: 121px;
+    }
+
+    .q-logo {
+        font-size: 149px;
+    }
+
+    .logo-container h5 {
+        font-size: 18px;
+    }
+
+    .sign-in-card {
+        padding: 8% 10% 5% 10%;
+        width: 80%;
+    }
+}
+
+
+@media (max-width: 1024px) {
+    .fa-arrow-left {
+        font-size: 25px;
+    }
+
+    main {
+        flex-direction: column;
+        height: auto;
+    }
+
+    .logo-container,
+    .sign-in-form {
+        width: 100%;
+        flex: none;
+    }
+
+    .logo-container {
+        padding: 60px 20px;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+    }
+
+    .lyn {
+        font-size: 60px;
+        text-shadow: 5px 5px 0px rgba(0, 0, 0, .4);
+        transform: none;
+        margin: 0;
+    }
+
+    .q-logo {
+        font-size: 70px;
+        text-shadow: 5px 5px 0px rgba(0, 0, 0, .4);
+        transform: none;
+        margin-left: 10px;
+    }
+
+    .logo-container h1 {
+        margin: 0;
+        line-height: 1;
+        transform: none;
+    }
+
+    .logo-container h5 {
+        font-size: 16px;
+        transform: none;
+        margin: 15px 0 0 0;
+        color: rgba(255, 255, 255, 0.9);
+    }
+
+    .wave-img {
+        display: none;
+    }
+
+    .sign-in-form {
+        padding: 40px 20px;
+        align-items: stretch;
+    }
+
+    .sign-in-card {
+        margin: auto;
+        width: 100%;
+        max-width: 80%;
+    }
+}

@@ -1,0 +1,979 @@
+/* http://meyerweb.com/eric/tools/css/reset/ 
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+body {
+	line-height: 1;
+}
+ol, ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+
+/* ===========================
+   FONTS
+   =========================== */
+
+.dm-sans{
+  font-family: "DM Sans", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: normal;
+  font-style: normal;
+}
+
+.archivo-black-regular {
+  font-family: "Archivo Black", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.fredoka{
+  font-family: "Fredoka", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: normal;
+  font-style: normal;
+  font-variation-settings: "wdth" 100;
+}
+
+.raleway{
+  font-family: "Raleway", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: normal;
+  font-style: normal;
+}
+
+/* ===========================
+   LANDING PAGE
+   =========================== */
+
+#landing-page-body{
+    background-color: #ffffff;
+    font-family: "DM Sans", sans-serif;
+    overflow-x: hidden;
+}
+
+.navbar {
+    background-color: #31511e !important;
+    top: 0 !important;
+    left: 0 !important;
+    width: 100% !important;
+    z-index: 1000 !important;
+    transition: top 0.3s ease-in-out !important;
+    font-family: "DM Sans", sans-serif !important;
+    vertical-align: middle;
+    padding: 20px 0;
+}
+
+.logo-name-nav{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-content: center;
+}
+
+.main-logo-nav{
+    margin-left: 100% !important;
+    font-family: "Archivo Black", sans-serif !important;
+    font-size: 2.41vw !important;
+    color: #ffffff !important;text-transform: uppercase !important; /* Ensure all uppercase */
+    text-shadow: 2px 2px 0px rgba(0, 0, 0, .4) !important;
+    line-height: 1;
+}
+
+.special-q-nav{
+    font-family: "Fredoka", sans-serif !important;
+    font-size: 3.50vw !important;
+    font-weight: 700 !important;
+    color: #f3f9db !important;
+    text-transform: uppercase !important; /* Ensure all uppercase */
+    text-shadow: 2px 2px 0px rgba(0, 0, 0, .4) !important;
+    line-height: 0.7;
+}
+
+/* Prevent color change on hover */
+.navbar-brand:hover,
+.navbar-brand:focus {
+    color: #ffffff !important; /* Keeps it white */
+}
+
+.navbar-nav {
+    margin-right: 100px !important; /* Moves the nav links away from the right */
+}
+
+.navbar-nav .nav-link {
+    color: #ffffff !important; /* Makes the color of the links white */
+    font-size: 16px !important;
+}
+
+.navbar .navbar-nav .nav-item{
+    display: inline-block;
+    list-style: none;
+    margin: 10px;
+}
+
+.navbar .navbar-nav .nav-item .nav-link { /*For underline effect on links in navbar*/
+    color: #fff;
+    text-decoration: none;
+    font-size: 14px;
+    position: relative;
+    padding-bottom: 5px; /* Adds spacing for underline */
+}
+
+.navbar .navbar-nav .nav-item .nav-link::after { /* Effects for hover on links in navbar*/
+    content: '';
+    width: 0; /* Start with no width */
+    height: 3px;
+    background: #fe4e1d;
+    position: absolute;
+    left: 0;  /* Align to left */
+    bottom: -6px; /* Position below the text */
+    transition: width 0.3s ease-in-out; /* Smooth underline effect */
+}
+
+/* Expand underline on hover */
+.navbar .navbar-nav .nav-item .nav-link:hover::after {
+    width: 70%;
+}
+
+.navbar-toggler[aria-expanded="true"] .navbar-brand {
+    color: #ffffff !important;
+}
+
+#landing{
+    background-color: #31511e;
+    color: #ffffff;
+    font-family: "DM Sans", sans-serif;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+}
+
+.hero-container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+}
+
+.logo-name-container{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-content: center;
+}
+
+.main-logo{
+    font-family: "Archivo Black", sans-serif;
+    font-size: 200px !important;
+    color: #ffffff;
+    text-transform: uppercase; /* Ensure all uppercase */
+    line-height: 1;
+    margin: 0; 
+    padding: 0; 
+    text-shadow: 8px 8px 0px rgba(0, 0, 0, .4);
+}
+
+.special-q {
+    font-family: "Fredoka", sans-serif;
+    font-size: 260px !important;
+    font-weight: 750;
+    color: #f3f9db;
+    text-transform: uppercase; /* Ensure all uppercase */
+    line-height: 0.8;
+    margin: 0; 
+    padding: 0; 
+    text-shadow: 8px 8px 0px rgba(0, 0, 0, .4);
+}
+
+.tagline{
+    display: inline-block;
+    font-family: "Raleway", sans-serif;
+    font-size: 24px !important;
+    color: #ffffff;
+    text-transform: lowercase;
+    text-align: left !important; 
+    translate: -20% 5%;
+}
+
+.hero-button{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0.5em;
+    height: 8vh;
+    width: 15vw;
+    margin-top: 1.25vw;
+    font-family: "DM Sans", sans-serif;
+    font-weight: bold;
+    background-color: #fe4e1d;
+    color: #ffffff;
+    border: none;
+    border-radius: 3rem;
+    box-shadow: 3px 3px 0px #661e08;
+    font-size: 20px;
+    text-decoration: none;
+}
+
+.arrow{
+    font-size: 25px
+} 
+
+.hero-button:hover{
+    background-color: #f3f9db;
+    color: #fe4e1d;
+    transform: translateY(-8px);
+    transition: 0.3s ease-in-out;
+}
+
+.hero-button:active {
+    transform: translateY(-1px);
+    transition: 0.3s ease-in-out;
+}
+
+/* ===========================
+   ABOUT SECTION
+   =========================== */
+
+#about{
+    height: auto;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    background-color: #f8f8f2;
+    font-family: "DM Sans", sans-serif;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+
+.about-section{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+    text-align: center;
+}
+
+.about-section h1{
+    font-family: "DM Sans", sans-serif;
+    font-size: 56px;
+    font-weight: bold;
+    color: #859f3d;
+    margin-top: 3rem;
+}
+
+.about-section p{
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+    font-family: "DM Sans", sans-serif;
+    font-size: 20px;
+    font-weight: 400 !important;
+    color: #000000;
+    padding: 20px 20% 10px 20%;
+    line-height: 1.5;
+}
+
+.about-section .p-span{
+    font-weight: bold;
+}
+
+.core-principles-section{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+    text-align: center;
+    margin: 7vw 0;
+}
+
+.core-principles-section h2{
+    font-family: "DM Sans", sans-serif;
+    font-size: 40px;
+    font-weight: bold;
+    color: #859f3d;
+}
+
+.principles-container{
+    display: flex; 
+    flex-direction: row;
+    width: 100%;
+    gap: 3rem;
+    margin: 0;
+    padding: 20px 6%;
+}
+
+.priciple {
+    max-width: 30vw;
+}
+
+.core-principles-section h3 {
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 1rem;
+}
+
+.core-principles-section p {
+  font-size: 18px;
+  line-height: 1.6;
+  text-align: justify;
+  color: #222;
+}
+
+.testimonials-section {
+    padding: 60px 20px; 
+    margin-bottom: 109px;
+    align-items: center;
+    text-align: center;
+    margin-right: auto;
+    margin-left: auto;
+    font-family: "DM Sans", sans-serif; 
+    color: #4a4a4a; 
+}
+
+.testimonials-section h2 {
+    font-family: "DM Sans", sans-serif;  
+    font-size: clamp(24px, 3vw, 48px); 
+    color: #859f3d;
+    text-transform: uppercase;
+    font-weight: bold;
+    margin-bottom: 40px;
+}
+
+/* --- Carousel Container (for positioning card and arrows) --- */
+.testimonial-carousel-container {
+    display: flex;
+    align-items: center; 
+    justify-content: center; 
+    max-width: 1000px; 
+    max-height: fit-content;
+    margin: 0 auto; 
+}
+
+.testimonial-cards-wrapper {
+    width: 100%; 
+    max-width: 900px; 
+    height: auto; 
+    overflow: hidden;
+}
+
+/* --- Navigation Arrows --- */
+.carousel-arrow {
+    background: none;
+    border: none;
+    font-size: 48px; 
+    color: #7c7a74; 
+    cursor: pointer;
+    padding: 0 15px; 
+    transition: color 0.3s ease;
+    flex-shrink: 0; /* Prevent arrows from shrinking */
+    z-index: 10; 
+}
+
+.carousel-arrow:hover {
+    color: #31511e; /* Dark green on hover */
+}
+
+/* --- Testimonial Card --- */
+.testimonial-card {
+    background-color: #e6ecde;
+    border-radius: 15px;
+    padding: 40px 60px;
+    top: 0;
+    left: 0;
+    width: 800px;
+    /* opacity: 0;  */
+    transition: opacity 0.5s ease-in-out; /* Smooth fade effect */
+    z-index: 1;
+    /* Ensure internal flexbox properties are still here for quote/author alignment */
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.testimonial-card.active {
+    /* opacity: 1; Make visible */
+    display: block;
+    position: relative;
+    z-index: 2;
+}
+
+.testimonial-card .quote {
+    font-size: clamp(16px, 2.2vw, 24px); /* Responsive font size for quote */
+    font-style: normal;
+    line-height: 1.6;
+    margin-bottom: 25px; 
+    text-align: center;
+    color: #555; 
+}
+
+.testimonial-card .author {
+    font-size: clamp(14px, 1.5vw, 18px); /* Responsive font size for author */
+    font-style: italic; /* Italicize the author line */
+    color: #777; 
+    margin-top: 0;
+    text-align: center; 
+}
+
+.testimonial-card .author .role {
+    font-weight: bold; 
+}
+
+/* ===========================
+   CONTACT SECTION
+   =========================== */
+
+#contact{
+    height: auto;
+    width: 100vw;
+    background-color: #b0c085;
+    color: #000000;
+    margin: 0;
+    overflow: hidden;
+}
+
+.contact-section{
+    display: flex;
+    justify-content: space-between;
+    gap: 10rem;
+    padding: 0.5rem 2rem;
+    flex-wrap: nowrap;
+}
+
+.email-container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 1rem;
+}
+
+.email-container img {
+    width: 30px;  
+    height: 30px; 
+    object-fit: contain; /* Ensures the image fits within the bounds without cropping */
+}
+
+.phone-number-container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-top: 1rem;
+}
+
+.number-container{
+    display: grid; /* Use CSS Grid to arrange the paragraphs into specific columns/rows */
+    grid-template-columns: auto 1fr; /* First column auto-width, second column takes remaining space */
+    gap: 0px 20px;
+    margin-top: 10px;
+    width: 100%; 
+    text-align: left;
+}
+
+.phone-number-container img {
+    width: 30px;  
+    height: 30px; 
+    object-fit: contain; /* Ensures the image fits within the bounds without cropping */
+}
+
+.soc-meds-container{
+    display: flex;
+    flex-direction: column;
+    margin-top: 1rem;
+}
+
+.socmeds-icon-container{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.soc-meds-container img {
+    width: 30px;  
+    height: 30px; 
+    object-fit: contain; /* Ensures the image fits within the bounds without cropping */
+}
+
+.soc-meds-container p{
+    font-family: "DM Sans", sans-serif;  
+    font-size: clamp(24px, 1rem, 48px); 
+    font-weight: 500;
+}
+
+/* ===========================
+   FOOTER SECTION
+   =========================== */
+
+footer {
+    background-color: #a6bb7a;
+    min-height: 300px;
+    padding: 40px 15% 15px 15%;
+    text-align: center;
+    color: #000;
+}
+
+.footer-contacts {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 20px;
+    padding: 10px 10px 30px 10px;
+}
+
+.contact-number {
+    width: 80%;
+    margin: 0 auto 20px auto;
+    font-size: 1.1em;
+    font-weight: 500;
+    text-align: center;
+    border-collapse: collapse;
+}
+
+.contact-number td {
+    padding: 8px 20px;
+}
+
+.phone-number-footer .contact-number {
+    width: 100%;
+}
+
+.footer-icon {
+    font-size: 25px;
+    color: #000;
+}
+
+.email-footer a {
+    text-decoration: none;
+    color: #000;
+    font-size: 1.1em;
+}
+
+.socmed-footer h6 {
+    font-size: 20px;
+}
+
+.socmed-footer a img {
+  width: 38px;
+  height: 38px;
+  transition: transform 0.2s;
+}
+
+.socmed-footer a img:hover {
+  transform: scale(1.1);
+}
+
+footer p a {
+    font-size: 15px;
+    text-decoration: none;
+    color: #000;
+}
+
+/* ===========================
+   MEDIA QUERIES
+   =========================== */
+
+/* Small screens (e.g., mobile phones) */
+@media (max-width: 768px) {
+    /* NAVBAR */
+    .navbar {
+        padding: 0.6rem 0;
+        flex-direction: column; /* Stack logo and nav links if needed */
+        justify-content: center;
+    }
+    .logo-name-nav {
+        padding-left: 0; /* Remove side padding for mobile */
+        margin-bottom: 0.5rem; /* Space below logo */
+    }
+    .navbar-nav {
+        padding-right: 0; /* Remove side padding */
+        flex-direction: column; /* Stack nav links vertically */
+        align-items: center;
+        width: 100%; /* Take full width */
+    }
+    .navbar .navbar-nav .nav-item {
+        margin: 5px 0; /* Smaller vertical margin */
+    }
+    .navbar .navbar-nav .nav-item .nav-link {
+        font-size: 0.9rem;
+    }
+    .navbar .navbar-nav .nav-item .nav-link::after {
+        bottom: -3px; /* Adjust underline position */
+    }
+    .main-logo-nav h1 {
+        margin-left: 0 !important;
+    }
+
+    /* LANDING */
+    #landing {
+        padding-top: 60px; /* Adjust for potentially smaller navbar */
+        max-height: 40vh;
+    }
+    .hero-container .main-logo {
+        font-size: clamp(5rem, 15vw, 7rem) !important; /* Larger relative to viewport */
+    }
+    .hero-container .special-q {
+        font-size: clamp(7rem, 20vw, 9rem) !important; /* Larger relative to viewport */
+        line-height: 0.75; /* Closer together */
+    }
+    .hero-container .tagline {
+        font-size: clamp(1.2rem, 1vw, 1.2rem) !important;
+        margin-top: 0.5rem; /* More negative margin to pull up */
+        margin-bottom: 0.5rem;
+        margin-left: 0; /* Remove left margin for mobile */
+        margin-right: -30px;
+        text-align: center; /* Center tagline text */
+        max-width: 80%;
+    }
+    .hero-button {
+        height: clamp(45px, 10vh, 40px);
+        width: clamp(160px, 40vw, 200px); /* Wider button for mobile taps */
+    }
+
+    /* ABOUT */
+    #about {
+        padding: 2rem 0;
+    }
+    .about-section {
+        width: 95%;
+        margin-bottom: 2rem;
+    }
+    .about-section h1 {
+        font-size: clamp(2rem, 6vw, 3.5rem);
+        margin-top: 2rem;
+    }
+    .about-section p {
+        font-size: clamp(0.9rem, 2.5vw, 1.1rem);
+        padding: 0 1rem;
+    }
+    .core-principles-section {
+        margin: 5vw 0;
+        width: 95%;
+    }
+    .core-principles-section h2 {
+        font-size: clamp(1.5rem, 4.5vw, 2.2rem);
+        margin-bottom: 1.5rem;
+    }
+    .principles-container {
+        flex-direction: column; /* Stack principles vertically */
+        justify-content: center;
+        align-items: center;
+        gap: 1.5rem;
+        width: 100vw;
+    }
+    .priciple {
+        width: 80%;
+    }
+    .core-principles-section h3 {
+        font-size: clamp(1rem, 3vw, 1.3rem);
+    }
+    .core-principles-section p {
+        font-size: clamp(0.8rem, 2.5vw, 1rem);
+    }
+
+    /* TESTIMONIALS */
+    .testimonials-section {
+        padding: 40px 10px;
+    }
+    .testimonials-section h2 {
+        font-size: clamp(20px, 4.5vw, 36px);
+        margin-bottom: 30px;
+    }
+    .testimonial-carousel-container {
+        padding: 0 5px;
+    }
+    .carousel-arrow {
+        font-size: clamp(25px, 5vw, 35px);
+        padding: 0 5px;
+    }
+    .testimonial-card {
+        padding: clamp(25px, 5vw, 40px) clamp(25px, 6vw, 40px);
+    }
+    .testimonial-card .quote {
+        font-size: clamp(14px, 3.5vw, 18px);
+        margin-bottom: 15px;
+    }
+    .testimonial-card .author {
+        font-size: clamp(12px, 2.8vw, 14px);
+    }
+
+    /* CONTACT */
+    #contact {
+        padding: 2rem 0;
+    }
+    .contact-section {
+        padding: 0.5rem 1rem;
+        gap: 1.5rem;
+    }
+
+    .email-container,
+    .phone-number-container,
+    .soc-meds-container {
+        max-width: 30%; /* Take almost full width */
+        margin-bottom: 1rem;
+    }
+
+    .email-container img,
+    .phone-number-container img,
+    .soc-meds-container img {
+        width: 15px;
+        height: 15px;
+    }
+    .email-container a{
+        font-size: clamp(0.7rem, 1vw, 1rem);
+    }
+    .phone-number-container p {
+        font-size: clamp(0.8rem, 2vw, 1rem);
+    }
+    .number-container {
+        grid-template-columns: 1fr; /* Stack always */
+        gap: 3px;
+        margin-top: 5px;
+    }
+    .number-container p {
+        font-size: clamp(0.8rem, 2vw, 1rem);
+    }
+    .socmeds-icon-container {
+        gap: 0.1rem;
+    }
+    .soc-meds-container > p {
+        font-size: clamp(0.7rem, 1vw, 1.1rem);
+    }
+
+    /* FOOTER */
+    footer {
+        font-size: clamp(0.7rem, 2vw, 0.8rem);
+        padding: 1rem 15px;
+    }
+}
+
+/* Medium screens (e.g., tablets) */
+@media (min-width: 769px) and (max-width: 1024px) {
+    /* NAVBAR */
+    .navbar {
+        padding: 0.8rem 0;
+    }
+    .logo-name-nav {
+        padding-left: 50px;
+    }
+    .navbar-nav {
+        padding-right: 50px;
+    }
+    .navbar .navbar-nav .nav-item {
+        margin: 0 10px;
+    }
+    .main-logo-nav h1 {
+        margin-left: 0 !important;
+    }
+
+    /* LANDING */
+    .hero-container .main-logo {
+        font-size: clamp(6rem, 10vw, 8rem) !important;
+    }
+    .hero-container .special-q {
+        font-size: clamp(8rem, 14vw, 11rem) !important;
+    }
+    .hero-container .tagline {
+        font-size: clamp(1rem, 1rem, 1.5rem) !important;
+        margin-top: -1vw; /* Adjust as needed */
+        margin-left: -8vw; /* Adjust as needed */
+    }
+    .hero-button {
+        height: clamp(50px, 9vh, 60px);
+        width: clamp(180px, 18vw, 250px);
+    }
+
+    /* ABOUT */
+    .about-section h1 {
+        font-size: clamp(2rem, 4vw, 4rem);
+    }
+    .about-section p {
+        font-size: clamp(0.9rem, 1.8vw, 1.3rem);
+    }
+    .core-principles-section h2 {
+        font-size: clamp(1.8rem, 2.8vw, 2.5rem);
+    }
+    .principles-container {
+        justify-content: center;
+        align-items: center;
+        gap: 2rem;
+        width: 80vw;
+    }
+    .priciple {
+        width: 80%;
+    }
+    .core-principles-section h3 {
+        font-size: clamp(1.1rem, 1.4vw, 1.3rem);
+    }
+    .core-principles-section p {
+        font-size: clamp(0.85rem, 1.1vw, 1.1rem);
+    }
+
+    /* TESTIMONIALS */
+    .testimonials-section h2 {
+        font-size: clamp(20px, 3.5vw, 40px);
+    }
+    .testimonial-card {
+        padding: clamp(30px, 4vw, 50px) clamp(40px, 6vw, 70px);
+    }
+    .testimonial-card .quote {
+        font-size: clamp(14px, 2vw, 20px);
+    }
+    .testimonial-card .author {
+        font-size: clamp(12px, 1.3vw, 16px);
+    }
+
+    /* CONTACT */
+    .contact-section {
+        flex-direction: column; /* Stack contact items */
+        align-items: center; /* Center stacked items */
+        gap: 2rem; /* Space between stacked items */
+    }
+    .email-container,
+    .phone-number-container,
+    .soc-meds-container {
+        max-width: 80%; /* Take more width on tablets */
+        text-align: center; /* Center text within each container */
+    }
+    .number-container {
+        grid-template-columns: 1fr; /* Stack numbers vertically */
+        text-align: center; /* Center text within number container */
+        max-width: 100%;
+    }
+    .socmeds-icon-container {
+        justify-content: center; /* Ensure icons are centered when column is centered */
+    }
+}
+
+Larger screens (desktop) - These are the default styles, but explicitly define if needed
+@media (min-width: 1025px) {
+    body {
+        background-size: auto 100%; /* Keep full height */
+        background-position: left center; /* Position left, center vertically */
+    }
+
+    .main-logo { 
+        font-size: 5vw; /* Slightly smaller on very large screens */
+        text-shadow: 10px 10px 0px #000;
+    }
+
+    .special-q {
+        font-size: 6vw;
+        line-height: 0.8; /* Corrected from -2, adjust as needed for visual alignment */
+        text-shadow: 10px 10px 0px #000;
+    }
+
+    .form-container { 
+        width: 30vw;
+        max-width: 600px;
+        padding: 1.5rem;
+    }
+
+    .form-container button {
+        padding: 1rem 5rem;
+    }
+
+    /* LANDING */
+    .hero-container .main-logo {
+        font-size: clamp(6rem, 10vw, 8rem) !important;
+    }
+    .hero-container .special-q {
+        font-size: clamp(8rem, 14vw, 11rem) !important;
+    }
+    .hero-container .tagline {
+        font-size: clamp(1.2rem, 1vw, 1.5rem) !important;
+        margin-top: -1vw; /* Adjust as needed */
+        margin-left: -8vw; /* Adjust as needed */
+    }
+    .hero-button {
+        height: clamp(50px, 9vh, 60px);
+        width: clamp(180px, 18vw, 250px);
+    }
+}
+
+@media (max-width: 1024px) {
+    .contact-info,
+    .contact-lynq {
+        max-width: 100%;
+        flex: 1 1 100%;
+    }
+
+    .contact-info h6 {
+        text-align: center;
+    }
+
+    .contact-card-new, 
+    .contact-card-existing, 
+    .contact-card-partner {
+        width: 80%;
+    }
+
+    .footer-contacts {
+        justify-content: center;
+        text-align: center;
+    }
+
+    .footer-contacts > div {
+        width: 100%;
+        max-width: 400px;
+    }
+
+    .socmed-footer a img {
+        width: 35px;
+        height: 35px;
+    }
+
+    .contact-number,
+    .contact-number thead,
+    .contact-number tbody,
+    .contact-number tr,
+    .contact-number td {
+        display: block;
+        width: 100%;
+    }
+}

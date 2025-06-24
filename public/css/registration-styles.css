@@ -1,0 +1,279 @@
+/* ===========================
+   FONTS
+   =========================== */
+
+.dm-sans{
+  font-family: "DM Sans", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: normal;
+  font-style: normal;
+}
+
+.archivo-black-regular {
+  font-family: "Archivo Black", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.fredoka{
+  font-family: "Fredoka", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: normal;
+  font-style: normal;
+  font-variation-settings: "wdth" 100;
+}
+
+.raleway{
+  font-family: "Raleway", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: normal;
+  font-style: normal;
+}
+
+/* ===========================
+   BODY
+   =========================== */
+
+body {
+    display: flex;
+    flex-direction: column; 
+    justify-content: center; 
+    align-items: center; 
+    height: 100vh;
+    margin: 0; 
+    background-color: #31511e;
+    color: #ffffff;
+    overflow: hidden; /* Prevents scrollbars if background is large */
+
+    /* === NEW: SVG as background === */
+    /* background-image: url("{{ asset('/images/Wavy-design.svg') }}");
+    background-repeat: no-repeat;
+    background-position: left center;
+    background-size: auto 100%; Scale width automatically, make height 100% of body */
+}
+
+header {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    z-index: 10;
+}
+
+.fa-arrow-left {
+    font-size: 35px;
+    color: #fff;
+    margin-left: 50%;
+}
+
+.fa-arrow-left:hover {
+    transform: scale(1.25);
+    cursor: pointer;
+}
+
+.main-content-wrapper {
+    display: flex;
+    flex-direction: column; 
+    justify-content: center;
+    align-items: center;
+    z-index: 1;
+}
+
+.logo-name-container{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-content: center;
+    margin-top: 2rem;
+}
+
+.main-logo{
+    font-family: "Archivo Black", sans-serif;
+    font-size: 80px !important;
+    font-weight: 800;
+    color: #ffffff;
+    text-transform: uppercase; /* Ensure all uppercase */
+    line-height: 1;
+    margin: 0; 
+    padding: 0; 
+    text-shadow: 8px 8px 0px rgba(0, 0, 0, .4);
+}
+
+.special-q {
+    font-family: "Fredoka", sans-serif;
+    font-size: 100px !important;
+    font-weight: 800;
+    text-transform: uppercase; /* Ensure all uppercase */
+    line-height: .8 !important;
+    margin: 0; 
+    padding: 0; 
+    text-shadow: 8px 8px 0px rgba(0, 0, 0, .4);
+    color: #f3f9db;
+}
+
+/* ===========================
+   FORM SECTION
+   =========================== */
+
+.form-container{
+    font-family: "DM Sans", sans-serif;
+    display: flex;
+    flex-direction: column;
+    background-color: #f3f9db;
+    color: black;
+    justify-content: center;
+    align-items: center;
+    border: none;
+    border-radius: 1rem;
+    width: 30vw;
+    height: auto;
+    margin: 5% 0;
+    padding: 20px;
+    text-align: center;
+}
+
+.form-container input{
+    background-color: #d9d9d9;
+    line-height: 1.5rem;
+    border: none;
+}
+
+.full-name-row{
+    display: flex;
+    flex-direction: row;
+    text-align: left;
+    gap: 1rem;
+}
+
+.form-group{
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+    padding: 0.5rem;
+}
+
+.form-container button{
+    font-family: "DM Sans", sans-serif;
+    background-color: #004aad;
+    color: #ffffff;
+    border: none;
+    border-radius: 3vw;
+    padding: 0.5rem 5rem;
+    margin-top: 1.2rem;
+    margin-bottom: 20px;
+    box-shadow: 3px 3px 0px #001939;
+}
+
+.form-container button:hover{
+    background-color: #002e6b;
+    color: #ffffff;
+    transform: translateY(-8px);
+    transition: 0.3s ease-in-out;
+    cursor: pointer;
+}
+
+.hero-button:active {
+    transform: translateY(-1px);
+    transition: 0.3s ease-in-out;
+}
+
+/* ===========================
+   MEDIA QUERIES
+   =========================== */
+
+/* Small screens (e.g., mobile phones) */
+@media (max-width: 768px) {
+    .main-logo {
+        font-size: 60px;
+        text-shadow: 3px 3px 0px rgba(0, 0, 0, .4);
+    }
+
+    .special-q {
+        font-size: 72px;
+        line-height: 64px;
+        text-shadow: 3px 3px 0px rgba(0, 0, 0, .4);
+    }
+
+    .logo-name-container {
+        margin-top: 16px;
+    }
+
+    .form-container {
+        min-width: 290px;
+        max-width: 450px;
+        padding: 8px;
+        margin: 8px auto;
+    }
+
+    .full-name-row {
+        flex-direction: column;
+        gap: 0;
+    }
+
+    .full-name-row .form-group {
+        width: 100%;
+        min-width: unset;
+    }
+
+    .form-group label {
+        font-size: 12px;
+    }
+
+    .form-container input {
+        padding: 14px;
+        width: 100%;
+        line-height: 16px;
+        font-size: 16px;
+    }
+
+    .form-container button {
+        padding: 12px 32px;
+        font-size: 16px;
+        border-radius: 32px;
+        box-shadow: 2px 2px 0px #001939;
+    }
+}
+
+/* Medium screens (e.g., tablets) */
+@media (min-width: 769px) and (max-width: 1024px) {
+    .main-logo {
+        font-size: 56px;
+    }
+
+    .special-q {
+        font-size: 72px;
+    }
+
+    .form-container {
+        width: 100%;
+        max-width: 450px;
+        padding: 40px;
+    }
+
+    .form-container button {
+        padding: 16px 48px;
+    }
+}
+
+/* Larger screens (desktop) */
+@media (min-width: 769px) {
+    .main-logo {
+        font-size: 56px;
+        text-shadow: 5px 5px 0px rgba(0, 0, 0, .4);
+    }
+
+    .special-q {
+        font-size: 72px;
+        line-height: 48px;
+        text-shadow: 5px 5px 0px rgba(0, 0, 0, .4);
+    }
+
+    .form-container {
+        width: 500px;
+        max-width: 600px;
+        padding: 24px;
+    }
+
+    .form-container button {
+        padding: 16px 80px;
+    }
+}
