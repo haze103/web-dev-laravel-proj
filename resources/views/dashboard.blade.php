@@ -16,7 +16,11 @@
     <header>
         <div class="header-nav">
             <h1><span class="lyn">LYN</span><span class="q-logo">Q</span></h1>
-            <a href="{{ route('sign_in') }}" class="logout-btn">Logout</a>
+            <form action="{{ route('logout') }}" method="post">
+                @csrf
+                @method('post')
+                <button type="submit" class="logout-btn">Logout</a>
+            </form>
         </div>
     </header>
     <main>

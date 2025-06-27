@@ -15,7 +15,11 @@
                 <i class="fa-solid fa-magnifying-glass"></i>
                 <input type="search" id="search-data">
             </div>
-            <a href="{{ route('landing_page') }}" class="logout-btn">Logout</a>
+            <form action="{{ route('logout') }}" method="post">
+                @csrf
+                @method('post')
+                <button type="submit" class="logout-btn">Logout</a>
+            </form>
         </div>
     </header>
     <main>
@@ -24,7 +28,7 @@
                 <ul class="sidebar-contents">
                     <li class="sidebar-item">
                         <i class="fa-duotone fa-solid fa-grid-2 fa-rotate-90"></i>
-                        <a class="sidebar-link" href="{{ route('landing_page') }}">Dashboard</a>
+                        <a class="sidebar-link" href="{{ route('dashboard') }}">Dashboard</a>
                     </li>
                     <li class="sidebar-item">
                         <i class="fa-regular fa-filter"></i>
