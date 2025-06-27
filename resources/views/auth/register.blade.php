@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'CONTACTS | LYNQ')
+@section('title', 'REGISTER | LYNQ')
 
 @section('styles')
     <link rel="stylesheet" href="{{ asset('css/registration-styles.css') }}">
