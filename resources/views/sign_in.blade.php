@@ -20,21 +20,54 @@
         <div class="sign-in-form">
             <div class="sign-in-card">
                 <h1>Sign In</h1>
-                <label for="email-add">Email</label>
-                <input type="email" id="email-add" name="email-add" required>
 
-                <label for="user-password">Password</label>
-                <input type="password" id="user-password" name="user-password" required>
+                <form method="POST" action="{{ route('login') }}">
+                    @csrf
 
-                <label for="remember-user"><input type="checkbox" id="remember-user">Remember Me</label>
+                    {{-- Email Field --}}
+                    <label for="email">Email</label>
+                    <input type="email" id="email" name="email" value="{{ old('email') }}" required autofocus>
+                    @error('email')
+                        <span class="text-danger">{{ $message }}</span>
+                    @enderror
 
-                <button type="submit" class="sign-in-btn">Sign In</button>
+                    {{-- Password Field --}}
+                    <label for="password">Password</label>
+                    <input type="password" id="password" name="password" required>
+                    @error('password')
+                        <span class="text-danger">{{ $message }}</span>
+                    @enderror
 
-                <h6><a href="#">Forgot Your Password</a></h6>
+                    {{-- Show Password Toggle --}}
+                    <div class="form-group mt-2">
+                        <label>
+                            <input type="checkbox" onclick="togglePassword()"> Show Password
+                        </label>
+                    </div>
 
-                <p>Don't have an account yet? <a href="#">Register here</a></p>
+                    {{-- Remember Me --}}
+                    <div class="form-group mt-2">
+                        <label for="remember">
+                            <input type="checkbox" name="remember" id="remember" {{ old('remember') ? 'checked' : '' }}>
+                            Remember Me
+                        </label>
+                    </div>
+
+                    <button type="submit" class="sign-in-btn mt-3">Sign In</button>
+
+                    <h6><a href="{{ route('password.request') }}">Forgot Your Password?</a></h6>
+                    <p>Don't have an account yet? <a href="{{ route('registration') }}">Register here</a></p>
+                </form>
             </div>
         </div>
     </main>
+
+    <script>
+        function togglePassword() {
+            const passwordField = document.getElementById("password");
+            passwordField.type = passwordField.type === "password" ? "text" : "password";
+        }
+    </script>
 </body>
 @endsection
+                                        

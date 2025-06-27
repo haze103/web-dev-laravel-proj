@@ -24,35 +24,50 @@
             <h1 class="main-logo">LYN</h1><h1 class="special-q">Q</h1>
         </div>
         <div class="form-container">
-            <form>
+            <form method="POST" action="{{ route('register') }}">
+                @csrf
+
                 <h2>Register</h2>
+
                 <div class="full-name-row">
                     <div class="form-group">
-                        <label for="firstName">First Name</label>
-                        <input type="text" id="firstName" name="firstName" required>
+                        <label for="first_name">First Name</label>
+                        <input type="text" id="first_name" name="first_name" value="{{ old('first_name') }}" required>
+                        @error('first_name')
+                            <span class="text-danger">{{ $message }}</span>
+                        @enderror
                     </div>
 
                     <div class="form-group">
-                        <label for="lastName">Last Name</label>
-                        <input type="text" id="lastName" name="lastName" required>
-                    </div>    
+                        <label for="last_name">Last Name</label>
+                        <input type="text" id="last_name" name="last_name" value="{{ old('last_name') }}" required>
+                        @error('last_name')
+                            <span class="text-danger">{{ $message }}</span>
+                        @enderror
+                    </div>
                 </div>
 
                 <div class="form-group">
                     <label for="email">Email</label>
-                    <input type="email" id="email" name="email" required>
+                    <input type="email" id="email" name="email" value="{{ old('email') }}" required>
+                    @error('email')
+                        <span class="text-danger">{{ $message }}</span>
+                    @enderror
                 </div>
-                
+
                 <div class="form-group">
                     <label for="password">Password</label>
                     <input type="password" id="password" name="password" required>
+                    @error('password')
+                        <span class="text-danger">{{ $message }}</span>
+                    @enderror
                 </div>
-                
+
                 <div class="form-group">
-                    <label for="confirmPassword">Confirm Password</label>
-                    <input class="input-box" type="password" id="confirmPassword" name="confirmPassword" required>
+                    <label for="password_confirmation">Confirm Password</label>
+                    <input class="input-box" type="password" id="password_confirmation" name="password_confirmation" required>
                 </div>
-                
+
                 <button type="submit">Register</button>
             </form>
         </div>
