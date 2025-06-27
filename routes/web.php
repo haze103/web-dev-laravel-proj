@@ -6,8 +6,6 @@ use Illuminate\Support\Facades\Auth;
 
 // Public routes
 Route::get('/contact', [PageController::class, 'contact'])->name('contact');
-Route::get('/sign-in', [PageController::class, 'signIn'])->name('sign_in');
-Route::get('/registration', [PageController::class, 'registration'])->name('registration');
 
 // Authenticated routes
 Route::middleware('auth')->group(function () {
