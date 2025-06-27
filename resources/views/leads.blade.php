@@ -20,7 +20,11 @@
                 <i class="fa-solid fa-magnifying-glass"></i>
                 <input type="search" id="search-data">
             </div>
-            <a href="{{ route('sign_in') }}" class="logout-btn">Logout</a>
+            <form action="{{ route('logout') }}" method="post">
+                @csrf
+                @method('post')
+                <button type="submit" class="logout-btn">Logout</a>
+            </form>
         </div>
     </header>
     <main>

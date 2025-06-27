@@ -28,10 +28,10 @@
                             <a class="nav-link" href="{{ route('contact') }}">Contact</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ route('sign_in') }}">Sign-In</a>
+                            <a class="nav-link" href="{{ route('login') }}">Sign-In</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ route('registration') }}">Register</a>
+                            <a class="nav-link" href="{{ route('register') }}">Register</a>
                         </li>
                     </ul>
                 </div>
