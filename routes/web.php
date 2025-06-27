@@ -6,8 +6,6 @@ use Illuminate\Support\Facades\Auth;
 
 // Public routes
 Route::get('/contact', [PageController::class, 'contact'])->name('contact');
-Route::get('/sign-in', [PageController::class, 'signIn'])->name('sign_in');
-Route::get('/registration', [PageController::class, 'registration'])->name('registration');
 
 // Authenticated routes
 Route::middleware('auth')->group(function () {
@@ -21,9 +19,4 @@ Route::middleware('auth')->group(function () {
 
 // Auth routes and landing page
 Auth::routes();
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('landing_page');
-
-// Redirect root URL to /home
-Route::get('/', function () {
-    return redirect()->route('landing_page');
-});
+Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('landing_page');

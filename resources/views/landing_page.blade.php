@@ -31,10 +31,10 @@
                         <a class="nav-link" href="{{ route('contact') }}">Contact</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ route('sign_in') }}">Sign-In</a>
+                        <a class="nav-link" href="{{ route('login') }}">Sign-In</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ route('registration') }}">Register</a>
+                        <a class="nav-link" href="{{ route('register') }}">Register</a>
                     </li>
                 </ul>
             </div>
@@ -47,7 +47,7 @@
                 <h1 class="main-logo">LYN</h1><h1 class="special-q">Q</h1>
             </div>
             <p class="tagline">connecting leads. closing deals.</p>
-            <a href="{{ route('sign_in') }}" class="hero-button">Access LYNQ <span class="arrow">➔</span></a>
+            <a href="{{ route('login') }}" class="hero-button">Access LYNQ <span class="arrow">➔</span></a>
         </div>
     </section>
 
