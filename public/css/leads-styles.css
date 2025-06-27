@@ -51,7 +51,7 @@ body{
     height: 100vh;
     background-color: #f8f8f2;
     /* color: #ffffff; */
-    overflow: hidden;
+    overflow-y: auto;
 }
 
 .navbar{

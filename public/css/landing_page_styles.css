@@ -424,7 +424,7 @@ table {
     padding: 40px 60px;
     top: 0;
     left: 0;
-    width: 800px;
+    width: 100%;
     /* opacity: 0;  */
     transition: opacity 0.5s ease-in-out; /* Smooth fade effect */
     z-index: 1;
@@ -673,6 +673,7 @@ footer p a {
     .hero-button {
         height: clamp(45px, 10vh, 40px);
         width: clamp(160px, 40vw, 200px); /* Wider button for mobile taps */
+        font-size: 16px;
     }
 
     /* ABOUT */

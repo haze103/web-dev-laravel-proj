@@ -1,20 +1,3 @@
-
-{{--  document.addEventListener('DOMContentLoaded', () => {
-    const heroButton = document.querySelector('.hero-button');
-
-    if (heroButton) {
-        heroButton.addEventListener('click', () =>{
-            const logInPageURL = 'signup-login.html';
-
-            window.location.href = logInPageURL;
-        })
-    } 
-    else {
-        console.warn("Hero button with class 'hero-button' not found on the page.");
-    }
-}) --}}
-
-
 document.addEventListener('DOMContentLoaded', () => {
     const testimonialCards = document.querySelectorAll('.testimonial-card');
     const prevButton = document.getElementById('prevTestimonial');

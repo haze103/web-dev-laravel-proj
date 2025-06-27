@@ -45,9 +45,9 @@ body{
     display: flex;
     flex-direction: column;
     height: 100vh;
+    overflow-y: auto;
     background-color: #f8f8f2;
     color: #ffffff;
-    overflow: hidden;
 }
 
 .navbar{
