@@ -46,6 +46,10 @@
                         <i class="fa-regular fa-list-check"></i>
                         <a class="sidebar-link" href="{{ route('tasks') }}">Task</a>
                     </li>
+                    <li class="sidebar-item">
+                        <i class="fa-regular fa-user"></i>
+                        <a class="sidebar-link" href="{{ route('admin_access_user') }}">Users</a>
+                    </li>
                 </ul>
             </nav>
         </aside>
