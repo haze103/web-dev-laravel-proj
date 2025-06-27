@@ -21,9 +21,4 @@ Route::middleware('auth')->group(function () {
 
 // Auth routes and landing page
 Auth::routes();
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('landing_page');
-
-// Redirect root URL to /home
-Route::get('/', function () {
-    return redirect()->route('landing_page');
-});
+Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('landing_page');
