@@ -3,8 +3,8 @@
 namespace Database\Seeders;
 
 use App\Models\User;
-// use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\Hash;
 
 class DatabaseSeeder extends Seeder
 {
@@ -13,11 +13,26 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        // User::factory(10)->create();
-
+        // Optional test user (not Super Admin)
         User::factory()->create([
-            'name' => 'Test User',
+            'first_name' => 'Test',
+            'last_name' => 'User',
             'email' => 'test@example.com',
+            'password' => Hash::make('password'),
+            'role' => 'Sales Representative',
+            'status' => 'Active',
         ]);
+
+        // Create Super Admin if not exists
+        if (!User::where('role', 'Super Admin')->exists()) {
+            User::create([
+                'first_name' => 'Super',
+                'last_name' => 'Admin',
+                'email' => 'superadmin@lynq.com',
+                'password' => Hash::make('supersecure123'),
+                'role' => 'Super Admin',
+                'status' => 'Active',
+            ]);
+        }
     }
 }

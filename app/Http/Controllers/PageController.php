@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\User;
 
 class PageController extends Controller
 {
@@ -43,6 +44,7 @@ class PageController extends Controller
     }
 
     public function adminAccessUser() {
-        return view('admin_access_user');
+        $users = User::all(); // fetch all users from the database
+        return view('admin_access_user', compact('users')); // pass users to the view
     }
 }
