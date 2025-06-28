@@ -12,6 +12,9 @@
 @endsection
 
 @section('main_section')
+@section('task_active')
+active
+@endsection
     <section class="main-content">
         <div class="headline">
             <h1>Task</h1>
