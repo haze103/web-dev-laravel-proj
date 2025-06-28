@@ -50,7 +50,6 @@ active
             <table class="table">
                 <thead>
                     <tr>
-                        <th>Checkbox</th>
                         <th>Title</th>
                         <th>Due Date</th>
                         <th>Status</th>
@@ -61,10 +60,6 @@ active
                 </thead>
                 <tbody>
                     <tr>
-                        <td style="width: 5%;">
-                            <input type="checkbox" class="task-done-checkbox" data-task-id="task-123">
-                            <label for="task-done-checkbox-task-123" class="visually-hidden">Mark task as done</label>
-                        </td>
                         <td style="width: 15%;">{{-- $post->title --}}</td>
                         <td style="width: 15%;">{{-- $post->due_date --}}</td>
                         <td style="width: 15%;">{{-- $post->status --}}</td>
@@ -105,7 +100,7 @@ active
             </div>
             <div class="lower-part">
                 <p>Created By</p>
-                <p id="current-user" class="current-user">(Current User)</p>
+                <p id="current-user" class="current-user">{{ auth()->user()->first_name }} {{ auth()->user()->last_name }}</p>
             </div>
         </div>
         <div class="sidebar-body">

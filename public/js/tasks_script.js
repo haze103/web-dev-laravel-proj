@@ -58,7 +58,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
             if (mode === 'add') {
                 sidebarHeaderH2.textContent = 'Add Task';
-                currentUserP.textContent = '(Current User)';
                 saveButton.textContent = 'Save';
                 saveButton.classList.remove('update-btn');
             } else if (mode === 'edit') {
