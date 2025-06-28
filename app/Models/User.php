@@ -20,6 +20,8 @@ class User extends Authenticatable
         'last_name',
         'email',
         'password',
+        'role',
+        'status',
     ];
 
     /**
@@ -45,4 +47,3 @@ class User extends Authenticatable
         ];
     }
 }
-                                                    
