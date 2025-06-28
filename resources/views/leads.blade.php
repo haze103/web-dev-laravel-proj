@@ -12,6 +12,9 @@
 @endsection
 
 @section('main_section')
+@section('lead_active')
+active
+@endsection
     <section class="main-content">
         <div class="headline">
             <h1>Leads</h1>

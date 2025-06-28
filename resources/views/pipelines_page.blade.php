@@ -7,6 +7,9 @@
 @endsection
 
 @section('main_section')
+@section('pipeline_active')
+active
+@endsection
     <section class="main-content">
         <div class="headline">
             <h1>Pipelines</h1>

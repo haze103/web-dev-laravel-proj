@@ -12,6 +12,9 @@
 @endsection
 
 @section('main_section')
+@section('dashboard_active')
+active
+@endsection
     <section class="main-content">
         <div class="content">
             <h1>DASHBOARD</h1>
