@@ -4,6 +4,12 @@
 
 @section('js')
     <script src="{{ asset('js/leads_script.js') }}"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            document.querySelector('.edit-btn').click();
+        })
+
+    </script>
 @endsection
 
 @section('styles')
@@ -68,7 +74,7 @@
                     </tr>
                 </thead>
 
-                @forelse ($leads as $lead)
+                @isset ($lead)
                     <tr>
                         <td>{{ $lead->name }}</td>
                         <td>{{ $lead->company }}</td>
@@ -80,57 +86,49 @@
                         <td>{{ $lead->amount }}</td>
                         <td>
                             <div class="action-btn-container">
-                                <button type="submit" class="edit-btn action-btn edit-lead-btn"
-                                    onclick="window.location.href = '{{ route('lead.edit', ['lead' => $lead]) }}'">Edit</button>
-                                <form action="{{ route('lead.destroy', ['lead' => $lead]) }}" method="post">
-                                    @csrf
-                                    @method('delete')
-                                    <button type="submit" class="delete-btn action-btn">Delete</button>
-                                </form>
+                                <button type="submit" class="edit-btn action-btn edit-lead-btn">Edit</button>
+                                <button type="submit" class="delete-btn action-btn">Delete</button>
                             </div>
                         </td>
                     </tr>
-                @empty
-                    <tr>
-                        <td colspan="9" style="text-align: center;">No leads</td>
-                    </tr>
-                @endforelse
+
+                @endisset
 
 
                 <!-- <tbody>
-                                                                <tr>
-                                                                        <td></td>
-                                                                        <td></td>
-                                                                        <td></td>
-                                                                        <td></td>
-                                                                        <td></td>
-                                                                        <td></td>
-                                                                        <td></td>
-                                                                        <td></td>
-                                                                        <td></td>
-                                                                        <td>
-                                                                            <a
-                                                                                href="#"
-                                                                                class="btn-edit edit-lead-btn"
-                                                                                data-id="{{-- $post->id --}}"
-                                                                                data-name="{{-- $post->name --}}"
-                                                                                data-company="{{-- $post->company --}}"
-                                                                                data-assigned-to="{{-- $post->assigneTo --}}"
-                                                                                data-stage="{{-- $post->stage --}}"
-                                                                                data-status="{{-- $post->status --}}"
-                                                                                data-closing-date="{{-- $post->closingaDate --}}"
-                                                                                data-amount="{{-- $post->amount --}}"
-                                                                                data-created-by="{{-- $post->createdBy ?? 'Unknown' --}}"
-                                                                            >
-                                                                                Edit
-                                                                            </a>
+                                                                    <tr>
+                                                                            <td></td>
+                                                                            <td></td>
+                                                                            <td></td>
+                                                                            <td></td>
+                                                                            <td></td>
+                                                                            <td></td>
+                                                                            <td></td>
+                                                                            <td></td>
+                                                                            <td></td>
+                                                                            <td>
+                                                                                <a
+                                                                                    href="#"
+                                                                                    class="btn-edit edit-lead-btn"
+                                                                                    data-id="{{-- $post->id --}}"
+                                                                                    data-name="{{-- $post->name --}}"
+                                                                                    data-company="{{-- $post->company --}}"
+                                                                                    data-assigned-to="{{-- $post->assigneTo --}}"
+                                                                                    data-stage="{{-- $post->stage --}}"
+                                                                                    data-status="{{-- $post->status --}}"
+                                                                                    data-closing-date="{{-- $post->closingaDate --}}"
+                                                                                    data-amount="{{-- $post->amount --}}"
+                                                                                    data-created-by="{{-- $post->createdBy ?? 'Unknown' --}}"
+                                                                                >
+                                                                                    Edit
+                                                                                </a>
 
-                                                                            {{-- <form action="{{ route('leads.destroy', $post->id) }}" method="POST" class="d-inline">
-                                                                                <button type="submit" class="btn-delete" onclick="return confirm('Are you sure?')">Delete</button>
-                                                                            </form> --}}
-                                                                        </td>
-                                                                    </tr>
-                                                                </tbody> -->
+                                                                                {{-- <form action="{{ route('leads.destroy', $post->id) }}" method="POST" class="d-inline">
+                                                                                    <button type="submit" class="btn-delete" onclick="return confirm('Are you sure?')">Delete</button>
+                                                                                </form> --}}
+                                                                            </td>
+                                                                        </tr>
+                                                                    </tbody> -->
             </table>
         </div>
     </section>
@@ -171,11 +169,6 @@
                 <label for="assignedTo">Assigned To</label>
                 <select id="assignedTo">
                     <option value="">Select Sales Rep</option>
-                    @foreach($users as $user)
-                        <option value="{{ $user->id }}">
-                            {{ $user->first_name }} {{ $user->last_name }}
-                        </option>
-                    @endforeach
                 </select>
             </div>
             <div class="form-group">
@@ -215,14 +208,15 @@
     </form>
 
     {{-- Form for update --}}
-    <form method="POST" action="" class="sidebar-form" id="sidebarUpdateForm">
+    <form method="POST" action="{{ route('lead.update', ['lead' => $lead]) }}" class="sidebar-form" id="sidebarUpdateForm">
         @csrf
         @method('put')
         <div class="sidebar-header">
             <div class="upper-part">
                 <div class="title-container">
                     <h2>Edit Lead</h2>
-                    <button class="close-sidebar-btn" type="button" id="closeSidebarBtn">&times;</button>
+                    <button class="close-sidebar-btn" type="button" id="closeSidebarBtn"
+                        onclick="location.href = '{{ route('leads') }}'">&times;</button>
                 </div>
 
                 <div class="hr-top">
@@ -232,7 +226,8 @@
             <div class="lower-part">
                 <p>Created By</p>
                 <p id="current-user" class="current-user">
-                    {{ auth()->user()->first_name . " " . auth()->user()->last_name }}
+
+                    {{ $data->created_by_first_name . " " . $data->created_by_last_name }}
                 </p>
                 <input type="hidden" name="created_by" value="{{ auth()->id() }}">
             </div>
@@ -240,51 +235,65 @@
         <div class="sidebar-body">
             <div class="form-group">
                 <label for="name">Name</label>
-                <input type="text" name="name" id="name" placeholder="Enter Name" required>
+                <input type="text" name="name" id="name" placeholder="Enter Name" value="{{ $data->name }}" required>
             </div>
             <div class="form-group">
                 <label for="companyName">Company Name</label>
-                <input type="text" name="company" id="companyName" placeholder="Enter Company Name" required>
+                <input type="text" name="company" id="companyName" placeholder="Enter Company Name"
+                    value="{{ $data->company }}" required>
             </div>
             <div class="form-group">
                 <label for="assignedTo">Assigned To</label>
                 <select id="assignedTo">
                     <option value="">Select Sales Rep</option>
+                    @foreach($users as $user)
+                        <option value="{{ $user->id }}" {{ $lead->assigned_to == $user->id ? 'selected' : '' }}>
+                            {{ $user->first_name }} {{ $user->last_name }}
+                        </option>
+                    @endforeach
                 </select>
             </div>
             <div class="form-group">
                 <label for="stage">Stage</label>
                 <select id="stage" name="stage" required>
                     <option value="">Select Stage</option>
-                    <option value="new">New</option>
-                    <option value="contacted">Contacted</option>
-                    <option value="proposal sent">Proposal Sent</option>
-                    <option value="won">Won</option>
-                    <option value="lost">Lost</option>
+                    <option value="new" {{ old('stage', $lead->stage) === 'new' ? 'selected' : '' }}>New</option>
+                    <option value="contacted" {{ old('stage', $lead->stage) === 'contacted' ? 'selected' : '' }}>Contacted
+                    </option>
+                    <option value="proposal sent" {{ old('stage', $lead->stage) === 'proposal sent' ? 'selected' : '' }}>
+                        Proposal Sent</option>
+                    <option value="won" {{ old('stage', $lead->stage) === 'won' ? 'selected' : '' }}>Won</option>
+                    <option value="lost" {{ old('stage', $lead->stage) === 'lost' ? 'selected' : '' }}>Lost</option>
                 </select>
             </div>
             <div class="form-group">
                 <label for="closingDate">Closing Date</label>
-                <input type="date" id="closingDate" name="closing_date" required> <span class="calendar-icon"></span>
+                <input type="date" id="closingDate" name="closing_date" required value="{{ $data->closing_date }}"> <span
+                    class="calendar-icon"></span>
             </div>
             <div class="form-group">
                 <label for="amount">Amount</label>
                 <input type="number" name="amount" step="0.01" pattern="^\d*(\.\d{0,2})?$" max="9999999999999999.99"
-                    id="amount" placeholder="0.00" required>
+                    id="amount" placeholder="0.00" required value="{{ $data->amount }}">
             </div>
             <div class="form-group">
                 <label for="status">Status</label>
                 <select id="status" name="status" required>
                     <option value="">Select Status</option>
-                    <option value="active">Active</option>
-                    <option value="follow-up">Follow-up</option>
-                    <option value="cold">Cold</option>
+                    <option value="active" {{ old('status', $lead->status ?? '') === 'active' ? 'selected' : '' }}>Active
+                    </option>
+                    <option value="follow-up" {{ old('status', $lead->status ?? '') === 'follow-up' ? 'selected' : '' }}>
+                        Follow-up</option>
+                    <option value="cold" {{ old('status', $lead->status ?? '') === 'cold' ? 'selected' : '' }}>Cold</option>
                 </select>
             </div>
         </div>
         <div class="sidebar-footer">
-            <button type="button" class="cancel-btn" id="cancel-sidebar-btn">Cancel</button>
+            <button type="button" class="cancel-btn" id="cancel-sidebar-btn"
+                onclick="location.href = '{{ route('leads') }}'">Cancel</button>
             <button type="submit" class="save-btn update-btn">Update</button>
         </div>
     </form>
+
+
 @endsection

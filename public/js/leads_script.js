@@ -37,20 +37,21 @@ document.addEventListener('DOMContentLoaded', () => {
         // Get references to elements
         // CORRECTED: addLeadBtn ID now matches HTML
         const addLeadBtn = document.getElementById('addLeadBtn');
-        const sidebarForm = document.getElementById('sidebarForm');
+        const sidebarAddForm = document.getElementById('sidebarAddForm');
+        const sidebarUpdateForm = document.getElementById('sidebarUpdateForm');
 
         // Check if sidebarForm exists before proceeding with its child elements
-        if (sidebarForm) {
+        if (sidebarAddForm || sidebarUpdateForm) {
             // CORRECTED: closeSidebarBtn ID now matches HTML
-            const closeSidebarBtn = document.getElementById('closeSidebarBtn');
+            const closeSidebarBtn = document.querySelectorAll('.close-sidebar-btn');
             // CORRECTED: cancelSidebarBtn ID now matches HTML
-            const cancelSidebarBtn = document.getElementById('cancel-sidebar-btn');
+            const cancelSidebarBtn = document.querySelectorAll('.cancel-btn');
             const sidebarOverlay = document.getElementById('sidebarOverlay');
             // CORRECTED: mainContent selector now matches HTML
             const mainContent = document.querySelector('.main-content');
 
             // Form fields inside the sidebar
-            const sidebarHeaderH2 = sidebarForm.querySelector('.sidebar-header h2');
+            // const sidebarHeaderH2 = sidebarForm.querySelector('.sidebar-header h2');
             const currentUserP = document.getElementById('current-user');
             const nameInput = document.getElementById('name');
             const companyNameInput = document.getElementById('companyName');
@@ -59,7 +60,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const closingDateInput = document.getElementById('closingDate');
             const amountInput = document.getElementById('amount');
             const statusSelect = document.getElementById('status');
-            const saveButton = sidebarForm.querySelector('.save-btn');
+            // const saveButton = sidebarForm.querySelector('.save-btn');
 
             // Select all "Edit Lead" buttons
             // CORRECTED: editLeadButtons class now matches HTML
@@ -73,37 +74,38 @@ document.addEventListener('DOMContentLoaded', () => {
                 clearFormFields(); // Always clear fields before populating or for 'add' mode
 
                 if (mode === 'add') {
-                    sidebarHeaderH2.textContent = 'Add Lead';
-                    currentUserP.textContent = '(Current User)'; // Or actual current user's name
-                    saveButton.textContent = 'Save';
-                    saveButton.classList.remove('update-btn'); // Remove any edit specific classes
+                    sidebarAddForm.classList.add('active');
+                    // sidebarHeaderH2.textContent = 'Add Lead';
+                    // saveButton.textContent = 'Save';
+                    // saveButton.classList.remove('update-btn'); // Remove any edit specific classes
                     // Hidden input for ID is cleared by clearFormFields()
                 } else if (mode === 'edit') {
-                    sidebarHeaderH2.textContent = 'Edit Lead';
+                    sidebarUpdateForm.classList.add('active');
+                    // sidebarHeaderH2.textContent = 'Edit Lead';
                     // Populate 'Created by' from data attribute if available, otherwise default
-                    currentUserP.textContent = leadData.createdBy || '(Existing User)';
-                    saveButton.textContent = 'Update';
-                    saveButton.classList.add('update-btn');
+                    // currentUserP.textContent = leadData.createdBy || '(Existing User)';
+                    // saveButton.textContent = 'Update';
+                    // saveButton.classList.add('update-btn');
 
                     // Populate form fields with leadData
-                    const leadIdInput = document.getElementById('leadId');
-                    if (leadIdInput) {
-                        leadIdInput.value = leadData.id || '';
-                    }
+                    // const leadIdInput = document.getElementById('leadId');
+                    // if (leadIdInput) {
+                    //     leadIdInput.value = leadData.id || '';
+                    // }
 
-                    nameInput.value = leadData.name || '';
-                    companyNameInput.value = leadData.company || '';
-                    assignedToSelect.value = leadData.assignedTo || '';
-                    stageSelect.value = leadData.stage || '';
+                    // nameInput.value = leadData.name || '';
+                    // companyNameInput.value = leadData.company || '';
+                    // assignedToSelect.value = leadData.assignedTo || '';
+                    // stageSelect.value = leadData.stage || '';
 
                     // For date inputs, ensure the format matches
                     // If leadData.closingDate is 'YYYY-MM-DD', it will work directly
-                    closingDateInput.value = leadData.closingDate || '';
-                    amountInput.value = leadData.amount || '';
-                    statusSelect.value = leadData.status || '';
+                    // closingDateInput.value = leadData.closingDate || '';
+                    // amountInput.value = leadData.amount || '';
+                    // statusSelect.value = leadData.status || '';
                 }
 
-                sidebarForm.classList.add('active');
+                
                 sidebarOverlay.classList.add('active');
                 if (mainContent) { // Check if mainContent exists before adding class
                      mainContent.classList.add('sidebar-active');
@@ -126,7 +128,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
             // Function to close the sidebar
             function closeSidebar() {
-                sidebarForm.classList.remove('active');
+                sidebarAddForm.classList.remove('active');
+                sidebarUpdateForm.classList.remove('active');
                 sidebarOverlay.classList.remove('active');
                 if (mainContent) { // Check if mainContent exists before removing class
                     mainContent.classList.remove('sidebar-active');
@@ -155,23 +158,27 @@ document.addEventListener('DOMContentLoaded', () => {
 
             // Event listeners for closing buttons
             if (closeSidebarBtn) {
-                closeSidebarBtn.addEventListener('click', closeSidebar);
+                closeSidebarBtn.forEach(item => {
+                    item.addEventListener('click', closeSidebar);
+                })
             }
 
             if (cancelSidebarBtn) {
-                cancelSidebarBtn.addEventListener('click', closeSidebar);
+                cancelSidebarBtn.forEach(item => {
+                    item.addEventListener('click', closeSidebar);
+                })
             }
 
-            if (sidebarOverlay) {
-                sidebarOverlay.addEventListener('click', closeSidebar);
-            }
+            // if (sidebarOverlay) {
+            //     sidebarOverlay.addEventListener('click', closeSidebar);
+            // }
 
             // Close sidebar on Escape key press
-            document.addEventListener('keydown', function(event) {
-                if (event.key === 'Escape' && sidebarForm.classList.contains('active')) {
-                    closeSidebar();
-                }
-            });
+            // document.addEventListener('keydown', function(event) {
+            //     if (event.key === 'Escape' && (sidebarAddForm.classList.contains('active') || sidebarUpdateForm.classList.contains('active'))) {
+            //         closeSidebar();
+            //     }
+            // });
 
         } else {
             console.error("Sidebar form element with ID 'sidebarForm' not found. Sidebar functionality may not work.");

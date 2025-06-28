@@ -20,6 +20,7 @@ return new class extends Migration
             $table->string('company');
             $table->string('position');
             $table->foreignId('sales_representative_id')->constrained('users');
+            $table->foreignId('created_by')->constrained('users');
         });
     }
 

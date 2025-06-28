@@ -5,18 +5,17 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Lead extends Model
+class Contact extends Model
 {
     use HasFactory;
 
     protected $fillable = [
-        'name',
+        'full_name',
+        'email',
+        'phone',
         'company',
-        'created_by',
-        'assigned_to',
-        'stage',
+        'position',
         'closing_date',
-        'amount',
-        'status'
+        'assigned_lead'
     ];
 }
