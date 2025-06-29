@@ -13,9 +13,7 @@ class ContactController extends Controller
      */
     public function index()
     {
-        $contacts = Contact::with(['salesRep', 'creator'])->get();
-        $users = User::where('role', 'Sales Representative')->get(); // adjust as needed
-        return view('contact_page', compact('contacts', 'users'));
+        //
     }
 
     /**
@@ -69,7 +67,7 @@ class ContactController extends Controller
             ])
             ->first();
 
-        $contact->update($data);
+        $users = User::all();
 
         return view('contact_edit', ['contact' => $contact, 'data' => $data, 'users' => $users])->with('success', 'Contact updated.');
     }
