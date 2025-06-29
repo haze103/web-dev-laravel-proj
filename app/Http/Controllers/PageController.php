@@ -9,6 +9,7 @@ use App\Models\Lead;
 use App\Models\Contact;
 use App\Models\Task;
 use Carbon\Carbon;
+
 class PageController extends Controller
 {
     public function landingPage()
@@ -23,6 +24,13 @@ class PageController extends Controller
 
     public function dashboard()
     {
+        $driver = DB::getDriverName();
+
+        $monthExpression = $driver === 'sqlite'
+            ? "strftime('%m', updated_at)"
+            : "MONTH(updated_at)";
+
+
         $total_leads = Lead::count();
         $leads_won = Lead::where('stage', '=', 'won')->count();
         $leads_lost = Lead::where('stage', '=', 'lost')->count();
@@ -39,12 +47,13 @@ class PageController extends Controller
             ->get();
 
         $conversion = DB::table('leads')
-            ->selectRaw("strftime('%m', closing_date) as month, COUNT(*) as count") // use MONTH() if MySQL
+            ->selectRaw("{$monthExpression} as month, COUNT(*) as count")
             ->where('stage', 'won')
-            ->whereYear('closing_date', Carbon::now()->year)
+            ->whereYear('updated_at', Carbon::now()->year)
             ->groupBy('month')
             ->orderBy('month')
             ->get();
+
 
         return view('dashboard', [
             'total_leads' => $total_leads,
