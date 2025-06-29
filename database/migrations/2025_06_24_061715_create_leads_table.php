@@ -15,8 +15,8 @@ return new class extends Migration {
             $table->timestamps();
             $table->string('name');
             $table->string('company');
-            $table->foreignId('created_by')->constrained('users');
-            $table->foreignId('assigned_to')->nullable()->constrained('users');
+            $table->foreignId('created_by')->nullable()->constrained('users')->onDelete('set null');
+            $table->foreignId('assigned_to')->nullable()->constrained('users')->onDelete('set null');
             $table->enum('stage', ['new', 'contacted', 'proposal sent', 'won', 'lost']);
             $table->date('closing_date');
             $table->decimal('amount', 18, 2);
