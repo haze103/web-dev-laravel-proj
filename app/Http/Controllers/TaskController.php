@@ -69,7 +69,20 @@ class TaskController extends Controller
             ])
             ->first();
 
-        $users = User::all();
+        switch (auth()->user()->role) {
+            case 'Super Admin':
+                $users = User::all();
+                break;
+            case 'Admin':
+                $users = User::all();
+                break;
+            case 'Sales Manager':
+                $users = User::whereIn('role', ['Sales Representative'])->get();
+                break;
+            case 'Sales Representative':
+                $users = User::whereIn('role', ['Sales Representative'])->get();
+                break;
+        }
 
         return view('task_edit', ['task' => $task, 'data' => $data, 'users' => $users]);
     }
