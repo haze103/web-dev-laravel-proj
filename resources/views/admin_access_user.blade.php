@@ -72,7 +72,7 @@ active
             <h1 class="edit-h1-side-panel">Edit User</h1>
             <hr>
 
-            {{-- ✅ Success & Error Handling --}}
+            {{-- Success & Error Handling --}}
             @if (session('success'))
                 <p style="color: green; font-weight: bold;">{{ session('success') }}</p>
             @endif

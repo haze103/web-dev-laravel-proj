@@ -26,6 +26,6 @@ class SuperAdminSeeder extends Seeder
             'status'     => 'Active',
         ]);
 
-        $this->command->info('✅ Super Admin created successfully!');
+        $this->command->info('Super Admin created successfully!');
     }
 }
