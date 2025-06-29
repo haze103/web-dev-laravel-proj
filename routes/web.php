@@ -53,10 +53,3 @@ Auth::routes();
 
 // Landing Page
 Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('landing_page');
-
-//ContactController CRUD routes
-Route::get('/contacts', [ContactController::class, 'index'])->name('contact_page');
-Route::post('/contacts', [ContactController::class, 'store'])->name('contact.store');
-Route::put('/contacts/{contact}', [ContactController::class, 'update'])->name('contact.update');
-Route::delete('/contacts/{contact}', [ContactController::class, 'destroy'])->name('contact.destroy');
-
