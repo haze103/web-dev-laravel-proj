@@ -6,20 +6,19 @@
     <link rel="stylesheet" href="{{ asset('css/linq_portal_styles.css') }}">
 @endsection
 
-@section('main_section')
-@section('user_active')
-active
-@endsection
+@section('user_active', 'active') {{-- Correct placement --}}
 
+@section('main_section')
 <section class="main-content">
     <div class="headline">
         <h1>Users</h1>
 
-        @unlessrole('Sales Representative')
+        {{-- Show Add User button only if user has Admin or Super Admin role --}}
+        @hasanyrole('Admin|Super Admin')
             <button type="button" class="add-btn">
                 <i class="fa-solid fa-plus"></i><i class="fa-thin fa-pipe"></i>Add User
             </button>
-        @endunlessrole
+        @endhasanyrole
 
         <div class="filter-items-container">
             <i class="fa-regular fa-sliders" onclick="openDropDown(); event.stopPropagation();"></i>
@@ -53,12 +52,13 @@ active
                     <td>{{ $user->getRoleNames()->first() }}</td>
                     <td>{{ $user->status }}</td>
                     <td>
-                        @unlessrole('Sales Representative')
+                        {{-- Only Admin or Super Admin can see Edit/Delete --}}
+                        @hasanyrole('Admin|Super Admin')
                             <div class="action-btn-container">
                                 <button type="button" class="edit-btn action-btn">Edit</button>
                                 <button type="button" class="delete-btn action-btn">Delete</button>
                             </div>
-                        @endunlessrole
+                        @endhasanyrole
                     </td>
                 </tr>
             @endforeach
@@ -67,7 +67,8 @@ active
 
     <div class="cover-main-content"></div>
 
-    @unlessrole('Sales Representative')
+    {{-- Show Add User form only for Admin or Super Admin --}}
+    @hasanyrole('Admin|Super Admin')
         <div class="side-panel-container">
             <h1 class="add-h1-side-panel">Add User</h1>
             <hr>
@@ -91,19 +92,19 @@ active
                     <div class="curr-user-container">
                         <label for="curr-user">Created By</label>
                         <input type="text" id="curr-user"
-                               value="{{ auth()->user()->first_name }} {{ auth()->user()->last_name }}" disabled>
+                            value="{{ auth()->user()->first_name }} {{ auth()->user()->last_name }}" disabled>
                     </div>
 
                     <div class="user-input">
                         <label for="admin-user-first-name">First Name</label>
                         <input type="text" id="admin-user-first-name" name="first_name"
-                               class="side-panel-input-field" required>
+                            class="side-panel-input-field" required>
                     </div>
 
                     <div class="user-input">
                         <label for="admin-user-last-name">Last Name</label>
                         <input type="text" id="admin-user-last-name" name="last_name"
-                               class="side-panel-input-field" required>
+                            class="side-panel-input-field" required>
                     </div>
 
                     <div class="user-input">
@@ -148,6 +149,6 @@ active
                 </div>
             </form>
         </div>
-    @endunlessrole
+    @endhasanyrole
 </section>
 @endsection
