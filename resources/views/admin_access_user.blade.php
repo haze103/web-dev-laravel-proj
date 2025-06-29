@@ -10,15 +10,16 @@
 @section('user_active')
 active
 @endsection
+
 <section class="main-content">
     <div class="headline">
         <h1>Users</h1>
 
-        @if (auth()->user()->role !== 'Sales Representative')
+        @unlessrole('Sales Representative')
             <button type="button" class="add-btn">
                 <i class="fa-solid fa-plus"></i><i class="fa-thin fa-pipe"></i>Add User
             </button>
-        @endif
+        @endunlessrole
 
         <div class="filter-items-container">
             <i class="fa-regular fa-sliders" onclick="openDropDown(); event.stopPropagation();"></i>
@@ -49,15 +50,15 @@ active
                 <tr>
                     <td>{{ $user->first_name }} {{ $user->last_name }}</td>
                     <td>{{ $user->email }}</td>
-                    <td>{{ $user->role }}</td>
+                    <td>{{ $user->getRoleNames()->first() }}</td>
                     <td>{{ $user->status }}</td>
                     <td>
-                        @if (auth()->user()->role !== 'Sales Representative')
+                        @unlessrole('Sales Representative')
                             <div class="action-btn-container">
                                 <button type="button" class="edit-btn action-btn">Edit</button>
                                 <button type="button" class="delete-btn action-btn">Delete</button>
                             </div>
-                        @endif
+                        @endunlessrole
                     </td>
                 </tr>
             @endforeach
@@ -66,7 +67,7 @@ active
 
     <div class="cover-main-content"></div>
 
-    @if (auth()->user()->role !== 'Sales Representative')
+    @unlessrole('Sales Representative')
         <div class="side-panel-container">
             <h1 class="add-h1-side-panel">Add User</h1>
             <hr>
@@ -147,6 +148,6 @@ active
                 </div>
             </form>
         </div>
-    @endif
+    @endunlessrole
 </section>
 @endsection

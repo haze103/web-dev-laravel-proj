@@ -21,11 +21,11 @@
             <h1>Task</h1>
 
             {{-- Hide Add Task Button if Sales Representative --}}
-            @unless(auth()->user()->role === 'Sales Representative')
+            @unlessrole('Sales Representative')
                 <button type="submit" class="add-btn" id="addTaskBtn">
                     <i class="fa-solid fa-plus"></i><i class="fa-thin fa-pipe"></i>Add Task
                 </button>
-            @endunless
+            @endunlessrole
 
             <div class="filter-items-container">
                 <i class="fa-regular fa-sliders" onclick="openDropDown(); event.stopPropagation();"></i>
@@ -63,7 +63,7 @@
                             <td style="width: 10%;">{{ $task->priority }}</td>
                             <td style="width: 15%;">
                                 {{-- Hide Edit/Delete buttons if Sales Representative --}}
-                                @unless(auth()->user()->role === 'Sales Representative')
+                                @unlessrole('Sales Representative')
                                     <div class="action-btn-container">
                                         <a onclick="location.replace('{{ route('task.edit', ['task' => $task]) }}')" class="btn-edit edit-task-btn action-btn">Edit</a>
                                         <form action="{{ route('task.destroy', ['task' => $task]) }}" method="post">
@@ -72,7 +72,7 @@
                                             <button type="submit" class="delete-btn action-btn">Delete</button>
                                         </form>
                                     </div>
-                                @endunless
+                                @endunlessrole
                             </td>
                         </tr>
                     @empty
@@ -88,7 +88,7 @@
     <div class="sidebar-overlay" id="sidebarOverlay"></div>
 
     {{-- Hide the Add Task Form if Sales Representative --}}
-    @unless(auth()->user()->role === 'Sales Representative')
+    @unlessrole('Sales Representative')
         <form class="sidebar-form" id="sidebarForm" method="post" action="{{ route('task.store') }}">
             @csrf
             @method('post')
@@ -119,7 +119,7 @@
 
                 <div class="form-group">
                     <label for="dueDate">Due Date</label>
-                    <input type="date" id="dueDate" name="due_date" required> <span class="calendar-icon"></span>
+                    <input type="date" id="dueDate" name="due_date" required>
                 </div>
 
                 <div class="form-group">
@@ -160,5 +160,5 @@
                 <button class="save-btn" type="submit">Save</button>
             </div>
         </form>
-    @endunless
+    @endunlessrole
 @endsection
