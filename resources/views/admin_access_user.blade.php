@@ -69,7 +69,6 @@ active
     @if (auth()->user()->role !== 'Sales Representative')
         <div class="side-panel-container">
             <h1 class="add-h1-side-panel">Add User</h1>
-            <h1 class="edit-h1-side-panel">Edit User</h1>
             <hr>
 
             {{-- Success & Error Handling --}}
