@@ -52,46 +52,42 @@
                     <th>Created By</th>
                     <th>Action</th>
                 </tr>
-                <tr>
-                    <td>data</td>
-                    <td>data</td>
-                    <td>data</td>
-                    <td>data</td>
-                    <td>data</td>
-                    <td>data</td>
-                    <td>data</td>
-                    <td>
-                        <div class="action-btn-container">
-                            <button type="submit" class="edit-btn action-btn">Edit</button>
-                            <button type="submit" class="delete-btn action-btn">Delete</button>
-                        </div>
-                    </td>
-                </tr>
-                <tr>
-                    <td>data</td>
-                    <td>data</td>
-                    <td>data</td>
-                    <td>data</td>
-                    <td>data</td>
-                    <td>data</td>
-                    <td>data</td>
-                    <td>
-                        <div class="action-btn-container">
-                            <button type="submit" class="edit-btn action-btn">Edit</button>
-                            <button type="submit" class="delete-btn action-btn">Delete</button>
-                        </div>
-                    </td>
-                </tr>
+                @forelse ($contacts as $contact)
+                    <tr>
+                        <td>{{ $contact->name }}</td>
+                        <td>{{ $contact->email }}</td>
+                        <td>{{ $contact->phone_number }}</td>
+                        <td>{{ $contact->company }}</td>
+                        <td>{{ $contact->position }}</td>
+                        <td>{{ $contact->assigned_to_first_name }} {{ $contact->assigned_to_last_name }}</td>
+                        <td>{{ $contact->created_by_first_name }} {{ $contact->created_by_last_name }}</td>
+                        <td>
+                            <div class="action-btn-container">
+                                <button type="button" class="edit-btn action-btn" onclick="location.replace('{{ route('contact.edit', ['contact' => $contact]) }}')">Edit</button>
+                                <form action="{{ route('contact.destroy', ['contact' => $contact]) }}" method="post">
+                                    @csrf
+                                    @method('delete')
+                                     <button type="submit" class="delete-btn action-btn">Delete</button>
+                                </form>
+                            </div>
+                        </td>
+                    </tr>
+                @empty
+                    <tr>
+                        <td style="text-align: center;" colspan="8">No Contacts</td>
+                    </tr>
+                @endforelse
+
             </table>
         </div>
         <div class="cover-main-content"></div>
-        <form class="side-panel-container" method="post" action="{{ route('contact.store') }}">
+        <form method="post" action="{{ route('contact.store') }}" class="side-panel-container">
             @csrf
             @method('post')
             <h1 class="add-h1-side-panel">Add Contact</h1>
-            <h1 class="edit-h1-side-panel">Edit Contact</h1>
             <hr>
             <div class="side-panel-form">
+
                 <div class="curr-user-container">
                     <label for="curr-user">Created By</label>
                     <p id="curr-user">{{ auth()->user()->first_name . " " . auth()->user()->last_name }}</p>
@@ -119,12 +115,14 @@
                 </div>
                 <div class="user-input">
                     <label for="assigned-lead-dropdown">Assigned Lead</label>
-                    <select id="assigned-lead-dropdown" class="side-panel-input-field" required
-                        name="sales_representative_id">
-                        <option value="" disabled selected hidden></option>
-                        <option value="">User 1</option>
-                        <option value="">User 2</option>
-                        <option value="">User 3</option>
+                    <select id="assigned-lead-dropdown" name="sales_representative_id" class="side-panel-input-field"
+                        required>
+                        <option value="">Select Sales Rep</option>
+                        @foreach($users as $user)
+                            <option value="{{ $user->id }}">
+                                {{ $user->first_name }} {{ $user->last_name }}
+                            </option>
+                        @endforeach
                     </select>
                 </div>
                 <div class="side-panel-btns">

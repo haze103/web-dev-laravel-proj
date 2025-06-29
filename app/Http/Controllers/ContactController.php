@@ -40,13 +40,13 @@ class ContactController extends Controller
         ]);
         $data['created_by'] = auth()->id();
         Contact::create($data);
-        return redirect('contact_page');
+        return redirect()->route('contact_page');
     }
 
     /**
      * Display the specified resource.
      */
-    public function show(Contact $lead)
+    public function show(Contact $contact)
     {
         //
     }
@@ -54,10 +54,10 @@ class ContactController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Contact $lead)
+    public function edit(Contact $contact)
     {
         $data = Contact::leftJoin('users as creator', 'creator.id', '=', 'contacts.created_by')
-            ->where('contacts.id', $lead->id)
+            ->where('contacts.id', $contact->id)
             ->leftJoin('users as assignee', 'assignee.id', '=', 'contacts.sales_representative_id')
             ->select([
                 'contacts.id',
@@ -75,22 +75,32 @@ class ContactController extends Controller
 
         $users = User::all();
 
-        return view('lead_edit', ['lead' => $lead, 'data' => $data, 'users' => $users]);
+        return view('contact_edit', ['contact' => $contact, 'data' => $data, 'users' => $users]);
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Contact $lead)
+    public function update(Request $request, Contact $contact)
     {
-        //
+        $data = $request->validate([
+            "name" => ['required'],
+            'email' => ['required', 'email'],
+            'phone_number' => ['required', 'digits_between:10,15'],
+            'company' => ['required'],
+            'position' => ['required'],
+            'sales_representative_id' => ['required', 'integer', 'exists:users,id']
+        ]);
+        $contact->update($data);
+        return redirect()->route('contact_page');
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Contact $lead)
+    public function destroy(Contact $contact)
     {
-        //
+        $contact->delete();
+        return redirect()->route('contact_page');
     }
 }

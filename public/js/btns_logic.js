@@ -54,16 +54,12 @@ document.addEventListener('DOMContentLoaded', function () {
 
     // show side panel and switch between edit and add 
     addBtn.addEventListener('click', function () {
-        document.querySelector('.add-h1-side-panel').style.display = 'block';
-        document.querySelector('.edit-h1-side-panel').style.display = 'none';
         panel.style.display = 'block';
         cover.style.display = 'block';
     });
 
     editBtn.forEach(btn => {
         btn.addEventListener('click', function () {
-            document.querySelector('.add-h1-side-panel').style.display = 'none';
-            document.querySelector('.edit-h1-side-panel').style.display = 'block';
             panel.style.display = 'block';
             cover.style.display = 'block';
         });
@@ -86,5 +82,5 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     cancelBtn.addEventListener('click', closeAndResetPanel);
-    saveBtn.addEventListener('click', closeAndResetPanel);
+    // saveBtn.addEventListener('click', closeAndResetPanel);
 });
