@@ -5,10 +5,10 @@
     <header>
         <div class="header-nav">
             <h1><span class="lyn">LYN</span><span class="q-logo">Q</span></h1>
-            <div class="search-input">
+            {{-- <div class="search-input">
                 <i class="fa-solid fa-magnifying-glass"></i>
                 <input type="search" id="search-data">
-            </div>
+            </div> --}}
             <form action="{{ route('logout') }}" method="post">
                 @csrf
                 @method('post')
