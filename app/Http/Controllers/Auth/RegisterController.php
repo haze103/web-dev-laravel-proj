@@ -7,6 +7,7 @@ use App\Models\User;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
+use Spatie\Permission\Models\Role;
 
 class RegisterController extends Controller
 {
@@ -44,18 +45,26 @@ class RegisterController extends Controller
      * Create a new user instance after a valid registration.
      */
     protected function create(array $data)
-{
-    \Log::info('Registering user with data:', $data); // log input
+    {
+        \Log::info('Registering user with data:', $data);
 
-    $user = User::create([
-        'first_name' => $data['first_name'],
-        'last_name'  => $data['last_name'],
-        'email'      => $data['email'],
-        'password'   => \Hash::make($data['password']),
-    ]);
+        $user = User::create([
+            'first_name' => $data['first_name'],
+            'last_name'  => $data['last_name'],
+            'email'      => $data['email'],
+            'password'   => Hash::make($data['password']),
+            'role'       => 'Sales Representative', // optional to keep syncing this with Spatie
+            'status'     => 'Active', // optional default
+        ]);
 
-    \Log::info('User created:', $user->toArray()); // log output
+        \Log::info('User created:', $user->toArray());
 
-    return $user;
-}
+        // Make sure the role exists
+        Role::firstOrCreate(['name' => 'Sales Representative']);
+
+        // Assign Spatie role
+        $user->assignRole('Sales Representative');
+
+        return $user;
+    }
 }

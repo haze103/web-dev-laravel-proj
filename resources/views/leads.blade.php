@@ -15,15 +15,16 @@
     @section('lead_active')
         active
     @endsection
+
     <section class="main-content">
         <div class="headline">
             <h1>Leads</h1>
 
-            @unless(auth()->user()->role === 'Sales Representative')
+            @unlessrole('Sales Representative')
                 <button type="submit" class="add-btn" id="addLeadBtn">
                     <i class="fa-solid fa-plus"></i><i class="fa-thin fa-pipe"></i>Add Lead
                 </button>
-            @endunless
+            @endunlessrole
 
             <div class="filter-items-container">
                 <i class="fa-regular fa-sliders" onclick="openDropDown(); event.stopPropagation();"></i>
@@ -68,7 +69,7 @@
                         <td>{{ $lead->closing_date }}</td>
                         <td>{{ $lead->amount }}</td>
                         <td>
-                            @unless(auth()->user()->role === 'Sales Representative')
+                            @unlessrole('Sales Representative')
                                 <div class="action-btn-container">
                                     <button type="submit" class="edit-btn action-btn edit-lead-btn"
                                         onclick="window.location.href = '{{ route('lead.edit', ['lead' => $lead]) }}'">Edit</button>
@@ -78,7 +79,7 @@
                                         <button type="submit" class="delete-btn action-btn">Delete</button>
                                     </form>
                                 </div>
-                            @endunless
+                            @endunlessrole
                         </td>
                     </tr>
                 @empty
@@ -93,7 +94,7 @@
     <div class="sidebar-overlay" id="sidebarOverlay"></div>
 
     {{-- ADD FORM - HIDDEN FOR SALES REP --}}
-    @unless(auth()->user()->role === 'Sales Representative')
+    @unlessrole('Sales Representative')
     <form method="POST" action="{{ route('lead.store') }}" class="sidebar-form" id="sidebarAddForm">
         @csrf
         <div class="sidebar-header">
@@ -113,7 +114,6 @@
             </div>
         </div>
         <div class="sidebar-body">
-            {{-- Lead form fields --}}
             <div class="form-group">
                 <label for="name">Name</label>
                 <input type="text" name="name" id="name" placeholder="Enter Name" required>
@@ -165,10 +165,10 @@
             <button type="submit" class="save-btn">Save</button>
         </div>
     </form>
-    @endunless
+    @endunlessrole
 
     {{-- EDIT FORM - HIDDEN FOR SALES REP --}}
-    @unless(auth()->user()->role === 'Sales Representative')
+    @unlessrole('Sales Representative')
     <form method="POST" action="" class="sidebar-form" id="sidebarUpdateForm">
         @csrf
         @method('put')
@@ -189,7 +189,6 @@
             </div>
         </div>
         <div class="sidebar-body">
-            {{-- Same fields as above --}}
             <div class="form-group">
                 <label for="name">Name</label>
                 <input type="text" name="name" id="name" placeholder="Enter Name" required>
@@ -238,5 +237,5 @@
             <button type="submit" class="save-btn update-btn">Update</button>
         </div>
     </form>
-    @endunless
+    @endunlessrole
 @endsection

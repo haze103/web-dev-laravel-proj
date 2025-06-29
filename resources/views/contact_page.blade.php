@@ -16,11 +16,11 @@
             <h1>Contacts</h1>
 
             {{-- Hide Add Contact Button if Sales Representative --}}
-            @unless(auth()->user()->role === 'Sales Representative')
+            @unlessrole('Sales Representative')
                 <button type="button" class="add-btn">
                     <i class="fa-solid fa-plus"></i><i class="fa-thin fa-pipe"></i>Add Contact
                 </button>
-            @endunless
+            @endunlessrole
 
             <div class="filter-items-container">
                 <i class="fa-regular fa-sliders" onclick="openDropDown(); event.stopPropagation();"></i>
@@ -59,7 +59,7 @@
                         <td>{{ $contact->created_by_first_name }} {{ $contact->created_by_last_name }}</td>
                         <td>
                             {{-- Hide Edit/Delete Buttons if Sales Representative --}}
-                            @unless(auth()->user()->role === 'Sales Representative')
+                            @unlessrole('Sales Representative')
                                 <div class="action-btn-container">
                                     <button type="button" class="edit-btn action-btn"
                                         onclick="location.replace('{{ route('contact.edit', ['contact' => $contact]) }}')">Edit</button>
@@ -69,7 +69,7 @@
                                         <button type="submit" class="delete-btn action-btn">Delete</button>
                                     </form>
                                 </div>
-                            @endunless
+                            @endunlessrole
                         </td>
                     </tr>
                 @empty
@@ -83,7 +83,7 @@
         <div class="cover-main-content"></div>
 
         {{-- Hide the Side Panel Form if Sales Representative --}}
-        @unless(auth()->user()->role === 'Sales Representative')
+        @unlessrole('Sales Representative')
             <form class="side-panel-container" method="post" action="{{ route('contact.store') }}" id="contact-form">
                 @csrf
                 <input type="hidden" name="contact_id" id="contact-id">
@@ -141,6 +141,6 @@
                     </div>
                 </div>
             </form>
-        @endunless
+        @endunlessrole
     </section>
 @endsection

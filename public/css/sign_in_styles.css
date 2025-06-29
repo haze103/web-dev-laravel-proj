@@ -123,7 +123,7 @@ main {
     color: #000;
 }
 
-#email-add, #user-password {
+#email, #password {
     width: 100%;
     padding: 10px;
     border: none;
