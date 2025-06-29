@@ -21,7 +21,7 @@ class User extends Authenticatable
         'last_name',
         'email',
         'password',
-        // You can remove 'role' if migrating fully to Spatie
+        'role',
         'status',
     ];
 

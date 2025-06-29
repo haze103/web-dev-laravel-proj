@@ -110,6 +110,7 @@
 
             <form action="{{ route('admin.users.store') }}" method="POST">
                 @csrf
+                @method('post')
                 <div class="side-panel-form">
                     <div class="curr-user-container">
                         <label for="curr-user">Created By</label>

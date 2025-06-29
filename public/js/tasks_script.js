@@ -67,16 +67,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
         function openSidebar(mode, taskData = {}) {
             if (mode === 'add') {
-                sidebarForm.querySelector('h2').innerText = 'Add Task';
-                clearFormFields();
+               
             } else if (mode === 'edit') {
-                sidebarForm.querySelector('h2').innerText = 'Edit Task';
-                titleInput.value = taskData.title || '';
-                dueDateInput.value = taskData.dueDate || '';
-                taskStatusSelect.value = taskData.status || '';
-                linkedLeadSelect.value = taskData.linkedLead || '';
-                prioritySelect.value = taskData.priority || '';
-                if (taskIdInput) taskIdInput.value = taskData.id || '';
+                
             }
 
             sidebarForm.classList.add('active');

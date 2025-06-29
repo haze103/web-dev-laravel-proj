@@ -83,7 +83,8 @@ class TaskController extends Controller
             'title' => ['required'],
             'due_date' => ['required', 'date'],
             'status' => ['required', Rule::in(['pending', 'in progress', 'done'])],
-            'sales_representative_id' => ['required', 'integer', 'exists:users,id']
+            'sales_representative_id' => ['required', 'integer', 'exists:users,id'],
+            'priority' => ['required', Rule::in(['low', 'medium', 'high'])]
         ]);
 
         $task->update($data);

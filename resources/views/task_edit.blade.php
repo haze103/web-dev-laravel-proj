@@ -85,9 +85,9 @@ active
 @if (auth()->user()->role !== 'Sales Representative')
     <div class="sidebar-overlay" id="sidebarOverlay"></div>
 
-    <form class="sidebar-form" id="sidebarForm" method="post" action="{{ route('task.store') }}">
+    <form class="sidebar-form" id="sidebarForm" method="post" action="{{ route('task.update', ['task' => $task]) }}">
         @csrf
-        @method('post')
+        @method('put')
         <div class="sidebar-header">
             <div class="upper-part">
                 <div class="title-container">
