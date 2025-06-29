@@ -76,7 +76,20 @@ class LeadController extends Controller
             ])
             ->first();
 
-        $users = User::all();
+        switch (auth()->user()->role) {
+            case 'Super Admin':
+                $users = User::all();
+                break;
+            case 'Admin':
+                $users = User::all();
+                break;
+            case 'Sales Manager':
+                $users = User::whereIn('role', ['Sales Representative'])->get();
+                break;
+            case 'Sales Representative':
+                $users = User::whereIn('role', ['Sales Representative'])->get();
+                break;
+        }
 
         return view('lead_edit', ['lead' => $lead, 'data' => $data, 'users' => $users]);
     }
