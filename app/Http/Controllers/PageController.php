@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\User;
 use App\Models\Lead;
 use App\Models\Contact;
+use App\Models\Task;
 
 class PageController extends Controller
 {
@@ -76,7 +77,19 @@ class PageController extends Controller
 
     public function tasks()
     {
-        return view('tasks');
+        $tasks = Task::leftJoin('users as assignee', 'assignee.id', '=', 'tasks.sales_representative_id')
+        ->select([
+            'tasks.id',
+            'assignee.first_name as assigned_to_first_name',
+            'assignee.last_name as assigned_to_last_name',
+            'tasks.title',
+            'tasks.due_date',
+            'tasks.status',
+            'tasks.priority'
+        ])
+        ->get();
+        $users = User::all();
+        return view('tasks', ['tasks' => $tasks, 'users' => $users]);
     }
 
     public function adminAccessUser()

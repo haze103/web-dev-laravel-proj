@@ -4,6 +4,11 @@
 
 @section('js')
     <script src="{{ asset('js/tasks_script.js') }}"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            document.querySelector('.edit-task-btn').click();
+        })
+    </script>
 @endsection
 
 @section('styles')
@@ -59,7 +64,7 @@
                     </tr>
                 </thead>
                 <tbody>
-                    @forelse ($tasks as $task)
+                    @isset ($task)
                         <tr>
                             <td style="width: 15%;">{{ $task->title }}</td>
                             <td style="width: 15%;">{{ $task->due_date   }}</td>
@@ -68,24 +73,14 @@
                             <td style="width: 10%;">{{ $task->priority }}</td>
                             <td style="width: 15%;">
                                 <div class="action-btn-container">
-                                    <a onclick="location.replace('{{ route('task.edit', ['task' => $task]) }}')" class="btn-edit edit-task-btn action-btn">
+                                    <button class="btn-edit edit-task-btn action-btn">
                                         Edit
-                                    </a>
-                                    <form action="{{ route('task.destroy', ['task' => $task]) }}" method="post">
-                                        @csrf
-                                        @method('delete')
-                                        <button type="submit" class="delete-btn action-btn">Delete</button>
-                                    </form>
+                                    </button>
+                                    <button type="submit" class="delete-btn action-btn">Delete</button>
                                 </div>
                             </td>
                         </tr>
-                    @empty
-                        <tr>
-                            <td style="text-align: center;" colspan="6">
-                                No tasks
-                            </td>
-                        </tr>
-                    @endforelse
+                    @endisset
 
                 </tbody>
             </table>
@@ -99,45 +94,50 @@
         <div class="sidebar-header">
             <div class="upper-part">
                 <div class="title-container">
-                    <h2>Add Task</h2>
-                    <button class="close-sidebar-btn" id="closeSidebarBtn">&times;</button>
+                    <h2>Edit Task</h2>
+                    <button class="close-sidebar-btn" id="closeSidebarBtn"
+                        onclick="location.href = '{{ route('tasks') }}'" type="button">&times;</button>
                 </div>
 
                 <div class="hr-top">
                     <hr style="border: 1px solid #0c0c0c; width: 90%; margin: 20px;">
                 </div>
             </div>
-            <div class="lower-part">
+            {{-- <div class="lower-part">
                 <p>Created By</p>
                 <p id="current-user" class="current-user">{{ auth()->user()->first_name }} {{ auth()->user()->last_name }}
                 </p>
-            </div>
+            </div> --}}
         </div>
         <div class="sidebar-body">
             <input type="hidden" id="taskId" name="task_id">
             <div class="form-group">
                 <label for="title">Title</label>
-                <input type="text" id="title" placeholder="Enter Task Title" name="title" required>
+                <input type="text" id="title" placeholder="Enter Task Title" name="title" required
+                    value="{{ $task->title }}">
             </div>
             <div class="form-group">
                 <label for="dueDate">Due Date</label>
-                <input type="date" id="dueDate" name="due_date" required> <span class="calendar-icon"></span>
+                <input type="date" id="dueDate" name="due_date" required value="{{ $task->due_date }}"> <span
+                    class="calendar-icon"></span>
             </div>
             <div class="form-group">
                 <label for="status">Status</label>
                 <select id="status" name="status" required>
                     <option value="">Select Stage</option>
-                    <option value="pending">Pending</option>
-                    <option value="in progress">In Progress</option>
-                    <option value="done">Done</option>
+                    <option value="pending" {{ old('status', $task->status) == 'pending' ? 'selected' : '' }}>Pending</option>
+                    <option value="in progress" {{ old('status', $task->status) == 'in progress' ? 'selected' : '' }}>In
+                        Progress</option>
+                    <option value="done" {{ old('status', $task->status) == 'done' ? 'selected' : '' }}>Done</option>
                 </select>
+
             </div>
             <div class="form-group">
-                <label for="linkedLead">Linked Lead</label>
+                <label for="linkedLead">Assigned</label>
                 <select id="linkedLead" name="sales_representative_id" required>
                     <option value="">Select Sales Rep</option>
                     @foreach($users as $user)
-                        <option value="{{ $user->id }}">
+                        <option value="{{ $user->id }}" {{ $task->sales_representative_id == $user->id ? 'selected' : '' }}>
                             {{ $user->first_name }} {{ $user->last_name }}
                         </option>
                     @endforeach
@@ -147,15 +147,17 @@
                 <label for="priority">Priority</label>
                 <select id="priority" name="priority" required>
                     <option value="">Select Stage</option>
-                    <option value="low">Low</option>
-                    <option value="medium">Medium</option>
-                    <option value="high">High</option>
+                    <option value="low" {{ old('priority', $task->priority) == 'low' ? 'selected' : '' }}>Low</option>
+                    <option value="medium" {{ old('priority',$task->priority) == 'medium' ? 'selected' : '' }}>Medium</option>
+                    <option value="high" {{ old('priority',$task->priority) == 'high' ? 'selected' : '' }}>High</option>
                 </select>
+
             </div>
         </div>
         <div class="sidebar-footer">
-            <button class="cancel-btn" id="cancel-sidebar-btn" type="button">Cancel</button>
-            <button class="save-btn" type="submit">Save</button>
+            <button class="cancel-btn" id="cancel-sidebar-btn" type="button"
+                onclick="location.href = '{{ route('tasks') }}'">Cancel</button>
+            <button class="save-btn update-btn" type="submit">Update</button>
         </div>
     </form>
 @endsection

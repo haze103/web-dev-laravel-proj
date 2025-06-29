@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Task;
 use App\Models\User;
 use Illuminate\Http\Request;
-use illuminate\Validation\Rule;
+use Illuminate\Validation\Rule;
 
 class TaskController extends Controller
 {
@@ -34,7 +34,8 @@ class TaskController extends Controller
             'title' => ['required'],
             'due_date' => ['required', 'date'],
             'status' => ['required', Rule::in(['pending', 'in progress', 'done'])],
-            'sales_representative_id' => ['required', 'integer', 'exists:users,id']
+            'sales_representative_id' => ['required', 'integer', 'exists:users,id'],
+            'priority' => ['required', Rule::in(['low', 'medium', 'high'])],
         ]);
 
         Task::create($data);
@@ -56,12 +57,21 @@ class TaskController extends Controller
     public function edit(Task $task)
     {
         $data = Task::where('tasks.id', $task->id)
-        ->leftJoin('users as assignee', 'assignee.id', '=', 'tasks.sales_representative_id')
-        ->select()
-        ->first();
+            ->leftJoin('users as assignee', 'assignee.id', '=', 'tasks.sales_representative_id')
+            ->select([
+                'tasks.id',
+                'assignee.first_name as assigned_to_first_name',
+                'assignee.last_name as assigned_to_last_name',
+                'tasks.title',
+                'tasks.due_date',
+                'tasks.status',
+                'tasks.priority'
+            ])
+            ->first();
 
         $users = User::all();
 
+        return view('task_edit', ['task' => $task, 'data' => $data, 'users' => $users]);
     }
 
     /**
