@@ -42,7 +42,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
         const sidebarHeaderH2 = sidebarForm.querySelector('.sidebar-header h2');
         const currentUserP = document.getElementById('current-user');
-        const taskCheckbox = document.querySelector('.task-done-checkbox');
         const titleInput = document.getElementById('title');
         const dueDateInput = document.getElementById('dueDate');
         const taskStatusSelect = document.getElementById('status');
@@ -54,25 +53,12 @@ document.addEventListener('DOMContentLoaded', () => {
         const editTaskButtons = document.querySelectorAll('.edit-task-btn');
 
         function openSidebar(mode, taskData = {}) {
-            clearFormFields();
+
 
             if (mode === 'add') {
-                sidebarHeaderH2.textContent = 'Add Task';
-                saveButton.textContent = 'Save';
-                saveButton.classList.remove('update-btn');
+                
             } else if (mode === 'edit') {
-                sidebarHeaderH2.textContent = 'Edit Task';
-                currentUserP.textContent = taskData.createdBy || '(Existing User)';
-                saveButton.textContent = 'Update';
-                saveButton.classList.add('update-btn');
 
-                if (taskIdInput) taskIdInput.value = taskData.id || '';
-                taskCheckbox.checked = taskData.isCompleted === 'true';
-                titleInput.value = taskData.title || '';
-                dueDateInput.value = taskData.dueDate || '';
-                taskStatusSelect.value = taskData.status || '';
-                linkedLeadSelect.value = taskData.linkedLead || '';
-                prioritySelect.value = taskData.priority || '';
             }
 
             sidebarForm.classList.add('active');
@@ -82,7 +68,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
 
         function clearFormFields() {
-            if (taskCheckbox) taskCheckbox.checked = false;
+           
             titleInput.value = '';
             dueDateInput.value = '';
             taskStatusSelect.value = '';
@@ -123,44 +109,7 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         });
 
-        if (closeSidebarBtn) closeSidebarBtn.addEventListener('click', closeSidebar);
-        if (cancelSidebarBtn) cancelSidebarBtn.addEventListener('click', closeSidebar);
-        if (sidebarOverlay) sidebarOverlay.addEventListener('click', closeSidebar);
-
-        document.addEventListener('keydown', function(event) {
-            if (event.key === 'Escape' && sidebarForm.classList.contains('active')) {
-                closeSidebar();
-            }
-        });
-
-        async function populateLinkedLeads() {
-            if (!linkedLeadSelect) {
-                console.error('Linked Lead select element not found in sidebar.');
-                return;
-            }
-
-            try {
-                const response = await fetch('/api/leads');
-                if (!response.ok) {
-                    throw new Error(`HTTP error! status: ${response.status}`);
-                }
-                const leads = await response.json();
-
-                linkedLeadSelect.innerHTML = '<option value="">Select Linked Lead</option>';
-
-                leads.forEach(lead => {
-                    const option = document.createElement('option');
-                    option.value = lead.id;
-                    option.textContent = lead.name;
-                    linkedLeadSelect.appendChild(option);
-                });
-
-            } catch (error) {
-                console.error('Error fetching linked leads:', error);
-            }
-        }
-
-        populateLinkedLeads();
+        
 
     } else {
         console.error("Sidebar form element with ID 'sidebarForm' not found. Sidebar functionality may not work.");

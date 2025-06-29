@@ -13,6 +13,7 @@ class Task extends Model
         'title',
         'due_date',
         'status',
-        'sales_representative_id'
+        'sales_representative_id',
+        'priority'
     ];
 }

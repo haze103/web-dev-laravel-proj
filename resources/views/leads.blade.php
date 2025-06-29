@@ -169,7 +169,7 @@
             </div>
             <div class="form-group">
                 <label for="assignedTo">Assigned To</label>
-                <select id="assignedTo">
+                <select id="assignedTo" name="assigned_to">
                     <option value="">Select Sales Rep</option>
                     @foreach($users as $user)
                         <option value="{{ $user->id }}">
