@@ -99,7 +99,7 @@
         {{-- Show Add User form only for Admin or Super Admin --}}
         @hasanyrole('Admin|Super Admin')
         <div class="side-panel-container">
-            <h1 class="add-h1-side-panel">Add User</h1>
+            <h1 class="add-h1-side-panel">Edit User</h1>
             <hr>
 
             {{-- Success & Error Handling --}}
@@ -115,8 +115,9 @@
                 </ul>
             @endif
 
-            <form action="{{ route('admin.users.store') }}" method="POST">
+            <form action="{{ route('admin.users.update', ['user' => $user]) }}" method="POST">
                 @csrf
+                @method('put')
                 <div class="side-panel-form">
                     <div class="curr-user-container">
                         <label for="curr-user">Created By</label>
