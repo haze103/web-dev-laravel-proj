@@ -20,7 +20,7 @@
             </button>
         @endhasanyrole
 
-        <div class="filter-items-container">
+        {{-- <div class="filter-items-container">
             <i class="fa-regular fa-sliders" onclick="openDropDown(); event.stopPropagation();"></i>
             <div class="filter-dropdown-menu">
                 <table class="filter-dropdown-menu-item">
@@ -33,7 +33,7 @@
                     <tr><td>Pending Accounts</td></tr>
                 </table>
             </div>
-        </div>
+        </div> --}}
     </div>
 
     <div class="details-data-table">
