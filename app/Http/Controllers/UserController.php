@@ -44,7 +44,7 @@ class UserController extends Controller
             return redirect()->back()->withErrors(['Only one Super Admin is allowed.']);
         }
 
-        User::create([
+        $user = User::create([
             'first_name' => $request->first_name,
             'last_name' => $request->last_name,
             'email' => $request->email,
@@ -52,6 +52,8 @@ class UserController extends Controller
             'role' => $request->role,
             'status' => $request->status,
         ]);
+
+        $user->assignRole($request->role);
 
         return redirect()->back()->with('success', 'User created successfully.');
     }
