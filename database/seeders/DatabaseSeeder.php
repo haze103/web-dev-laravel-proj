@@ -34,5 +34,8 @@ class DatabaseSeeder extends Seeder
                 'status' => 'Active',
             ]);
         }
+
+        // Call RoleSeeder to create roles and assign them to users
+        $this->call(RoleSeeder::class);
     }
 }
