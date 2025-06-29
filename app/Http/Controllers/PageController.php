@@ -104,7 +104,22 @@ class PageController extends Controller
             ])
             ->get();
 
-        $users = User::all();
+        switch (auth()->user()->role) {
+            case 'Super Admin':
+                $users = User::all();
+                break;
+            case 'Admin':
+                $users = User::all();
+                break;
+            case 'Sales Manager':
+                $users = User::whereIn('role', ['Sales Representative'])->get();
+                break;
+            case 'Sales Representative':
+                $users = User::whereIn('role', ['Sales Representative'])->get();
+                break;
+        }
+
+
 
         return view('leads', ['leads' => $leads, 'users' => $users]);
     }
@@ -126,7 +141,22 @@ class PageController extends Controller
                 'contacts.position'
             ])
             ->get();
-        $users = User::all();
+
+        switch (auth()->user()->role) {
+            case 'Super Admin':
+                $users = User::all();
+                break;
+            case 'Admin':
+                $users = User::all();
+                break;
+            case 'Sales Manager':
+                $users = User::whereIn('role', ['Sales Representative'])->get();
+                break;
+            case 'Sales Representative':
+                $users = User::whereIn('role', ['Sales Representative'])->get();
+                break;
+        }
+
         return view('contact_page', ['contacts' => $contacts, 'users' => $users]);
     }
 
@@ -143,7 +173,22 @@ class PageController extends Controller
                 'tasks.priority'
             ])
             ->get();
-        $users = User::all();
+
+        switch (auth()->user()->role) {
+            case 'Super Admin':
+                $users = User::all();
+                break;
+            case 'Admin':
+                $users = User::all();
+                break;
+            case 'Sales Manager':
+                $users = User::whereIn('role', ['Sales Representative'])->get();
+                break;
+            case 'Sales Representative':
+                $users = User::whereIn('role', ['Sales Representative'])->get();
+                break;
+        }
+
         return view('tasks', ['tasks' => $tasks, 'users' => $users]);
     }
 
