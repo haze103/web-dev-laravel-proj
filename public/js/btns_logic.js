@@ -1,7 +1,7 @@
 document.addEventListener('DOMContentLoaded', function () {
     const dropdown = document.querySelector('.filter-dropdown-menu'), 
     table = document.querySelector('.filter-dropdown-menu-item'),
-    cell = table.querySelectorAll('td'), 
+    // cell = table.querySelectorAll('td'), 
     addBtn = document.querySelector('.add-btn'), 
     editBtn = document.querySelectorAll('.edit-btn'),
     cover = document.querySelector('.cover-main-content'), 
@@ -35,22 +35,22 @@ document.addEventListener('DOMContentLoaded', function () {
     });
 
     // only allow one selection per column
-    cell.forEach(td => {
-        td.addEventListener('click', function () {
-            const columnIndex = td.cellIndex;
+    // cell.forEach(td => {
+    //     td.addEventListener('click', function () {
+    //         const columnIndex = td.cellIndex;
 
-            // deselect selected cell
-            table.querySelectorAll(`tr`).forEach(row => {
-                const cell = row.cells[columnIndex];
-                if (cell) {
-                    cell.classList.remove('selected');
-                }
-            });
+    //         // deselect selected cell
+    //         table.querySelectorAll(`tr`).forEach(row => {
+    //             const cell = row.cells[columnIndex];
+    //             if (cell) {
+    //                 cell.classList.remove('selected');
+    //             }
+    //         });
 
-            // select cell
-            td.classList.add('selected');
-        });
-    });
+    //         // select cell
+    //         td.classList.add('selected');
+    //     });
+    // });
 
     // show side panel and switch between edit and add 
     addBtn.addEventListener('click', function () {
