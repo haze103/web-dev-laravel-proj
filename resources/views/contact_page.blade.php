@@ -87,6 +87,7 @@
             <form class="side-panel-container" method="post" action="{{ route('contact.store') }}" id="contact-form">
                 @csrf
                 @method('post')
+                {{-- Hidden input to store contact ID for editing --}}
                 <input type="hidden" name="contact_id" id="contact-id">
 
                 <h1 class="add-h1-side-panel">Add Contact</h1>
@@ -111,7 +112,7 @@
 
                     <div class="user-input">
                         <label for="contact-phone">Phone</label>
-                        <input type="tel" id="contact-phone" class="side-panel-input-field" name="phone_number" required>
+                        <input type="tel" id="contact-phone" class="side-panel-input-field" name="phone_number" required minlength="10" maxlength="15" pattern="[0-9]{10,15}">
                     </div>
 
                     <div class="user-input">

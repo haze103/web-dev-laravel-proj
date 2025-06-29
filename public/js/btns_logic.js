@@ -26,13 +26,13 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     // close the dropdown if clicked outside
-    // document.addEventListener('click', function (event) {
-    //     const isClickInside = dropdown.contains(event.target);
-    //     const isIconClicked = event.target.classList.contains('fa-sliders');
-    //     if (!isClickInside && !isIconClicked) {
-    //         closeDropDown();
-    //     }
-    // });
+   /* document.addEventListener('click', function (event) {
+        const isClickInside = dropdown.contains(event.target);
+        const isIconClicked = event.target.classList.contains('fa-sliders');
+        if (!isClickInside && !isIconClicked) {
+            closeDropDown();
+        }
+    });*/
 
     // only allow one selection per column
     // cell.forEach(td => {
