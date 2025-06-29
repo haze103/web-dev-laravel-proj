@@ -100,7 +100,7 @@
             <div class="upper-part">
                 <div class="title-container">
                     <h2>Add Task</h2>
-                    <button class="close-sidebar-btn" id="closeSidebarBtn">&times;</button>
+                    <button type="button" class="close-sidebar-btn" id="closeSidebarBtn" onclick="location.replace('{{ route('tasks') }}')">&times;</button>
                 </div>
 
                 <div class="hr-top">
@@ -154,7 +154,7 @@
             </div>
         </div>
         <div class="sidebar-footer">
-            <button class="cancel-btn" id="cancel-sidebar-btn" type="button">Cancel</button>
+            <button class="cancel-btn" id="cancel-sidebar-btn" type="button" onclick="location.replace('{{ route('tasks') }}')">Cancel</button>
             <button class="save-btn" type="submit">Save</button>
         </div>
     </form>

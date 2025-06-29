@@ -34,52 +34,41 @@
 
         <div class="details-data-table">
             <table class="contacts-table-data data-table">
-                <thead>
+                <tr>
+                    <th>Full Name</th>
+                    <th>Email</th>
+                    <th>Phone</th>
+                    <th>Company</th>
+                    <th>Position</th>
+                    <th>Assigned Sales Representative</th>
+                    <th>Created By</th>
+                    <th>Action</th>
+                </tr>
+                @forelse ($contacts as $contact)
                     <tr>
-                        <th>Full Name</th>
-                        <th>Email</th>
-                        <th>Phone</th>
-                        <th>Company</th>
-                        <th>Position</th>
-                        <th>Assigned Sales Representative</th>
-                        <th>Created By</th>
-                        <th>Action</th>
+                        <td>{{ $contact->name }}</td>
+                        <td>{{ $contact->email }}</td>
+                        <td>{{ $contact->phone_number }}</td>
+                        <td>{{ $contact->company }}</td>
+                        <td>{{ $contact->position }}</td>
+                        <td>{{ $contact->assigned_to_first_name }} {{ $contact->assigned_to_last_name }}</td>
+                        <td>{{ $contact->created_by_first_name }} {{ $contact->created_by_last_name }}</td>
+                        <td>
+                            <div class="action-btn-container">
+                                <button type="button" class="edit-btn action-btn" onclick="location.replace('{{ route('contact.edit', ['contact' => $contact]) }}')">Edit</button>
+                                <form action="{{ route('contact.destroy', ['contact' => $contact]) }}" method="post">
+                                    @csrf
+                                    @method('delete')
+                                     <button type="submit" class="delete-btn action-btn">Delete</button>
+                                </form>
+                            </div>
+                        </td>
                     </tr>
-                </thead>
-                <tbody>
-                    @foreach ($contacts as $contact)
-                        <tr>
-                            <td>{{ $contact->name }}</td>
-                            <td>{{ $contact->email }}</td>
-                            <td>{{ $contact->phone_number }}</td>
-                            <td>{{ $contact->company }}</td>
-                            <td>{{ $contact->position }}</td>
-                            <td>{{ $contact->salesRep->full_name ?? 'Unassigned' }}</td>
-                            <td>{{ $contact->creator->full_name ?? 'N/A' }}</td>
-                            <td>
-                                <div class="action-btn-container">
-                                    <button 
-                                        type="button" 
-                                        class="edit-btn action-btn"
-                                        data-id="{{ $contact->id }}"
-                                        data-name="{{ $contact->name }}"
-                                        data-email="{{ $contact->email }}"
-                                        data-phone="{{ $contact->phone_number }}"
-                                        data-company="{{ $contact->company }}"
-                                        data-position="{{ $contact->position }}"
-                                        data-lead="{{ $contact->sales_representative_id }}"
-                                    >Edit</button>
-
-                                    <form method="POST" action="{{ route('contact.destroy', $contact->id) }}" style="display:inline;">
-                                        @csrf
-                                        @method('DELETE')
-                                        <button type="submit" class="delete-btn action-btn" onclick="return confirm('Are you sure you want to delete this contact?')">Delete</button>
-                                    </form>
-                                </div>
-                            </td>
-                        </tr>
-                    @endforeach
-                </tbody>
+                @empty
+                    <tr>
+                        <td style="text-align: center;" colspan="8">No Contacts</td>
+                    </tr>
+                @endforelse
             </table>
         </div>
 
@@ -91,10 +80,10 @@
             <input type="hidden" name="contact_id" id="contact-id">
 
             <h1 class="add-h1-side-panel">Add Contact</h1>
-            <h1 class="edit-h1-side-panel">Edit Contact</h1>
             <hr>
 
             <div class="side-panel-form">
+
                 <div class="curr-user-container">
                     <label for="curr-user">Created By</label>
                     <p id="curr-user">{{ auth()->user()->first_name . " " . auth()->user()->last_name }}</p>
@@ -128,10 +117,13 @@
 
                 <div class="user-input">
                     <label for="assigned-lead-dropdown">Assigned Lead</label>
-                    <select id="assigned-lead-dropdown" class="side-panel-input-field" name="sales_representative_id" required>
-                        <option value="" disabled selected hidden></option>
-                        @foreach ($users as $user)
-                            <option value="{{ $user->id }}">{{ $user->full_name }}</option>
+                    <select id="assigned-lead-dropdown" name="sales_representative_id" class="side-panel-input-field"
+                        required>
+                        <option value="">Select Sales Rep</option>
+                        @foreach($users as $user)
+                            <option value="{{ $user->id }}">
+                                {{ $user->first_name }} {{ $user->last_name }}
+                            </option>
                         @endforeach
                     </select>
                 </div>
