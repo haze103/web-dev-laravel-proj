@@ -97,6 +97,7 @@
     @unlessrole('Sales Representative')
     <form method="POST" action="{{ route('lead.store') }}" class="sidebar-form" id="sidebarAddForm">
         @csrf
+        @method('post')
         <div class="sidebar-header">
             <div class="upper-part">
                 <div class="title-container">
