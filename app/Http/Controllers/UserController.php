@@ -20,11 +20,11 @@ class UserController extends Controller
     {
         $request->validate([
             'first_name' => 'required|string|max:255',
-            'last_name'  => 'required|string|max:255',
-            'email'      => 'required|email|unique:users,email',
-            'password'   => 'required|string|min:6|confirmed',
-            'role'       => 'required|in:Super Admin,Admin,Sales Manager,Sales Representative',
-            'status'     => 'required|in:Active,Inactive,Pending Accounts',
+            'last_name' => 'required|string|max:255',
+            'email' => 'required|email|unique:users,email',
+            'password' => 'required|string|min:6|confirmed',
+            'role' => 'required|in:Super Admin,Admin,Sales Manager,Sales Representative',
+            'status' => 'required|in:Active,Inactive,Pending Accounts',
         ]);
 
         $currentUser = auth()->user();
@@ -46,11 +46,11 @@ class UserController extends Controller
 
         User::create([
             'first_name' => $request->first_name,
-            'last_name'  => $request->last_name,
-            'email'      => $request->email,
-            'password'   => Hash::make($request->password),
-            'role'       => $request->role,
-            'status'     => $request->status,
+            'last_name' => $request->last_name,
+            'email' => $request->email,
+            'password' => Hash::make($request->password),
+            'role' => $request->role,
+            'status' => $request->status,
         ]);
 
         return redirect()->back()->with('success', 'User created successfully.');
@@ -71,10 +71,10 @@ class UserController extends Controller
 
         $request->validate([
             'first_name' => 'required|string|max:255',
-            'last_name'  => 'required|string|max:255',
-            'email'      => 'required|email|unique:users,email,' . $user->id,
-            'role'       => 'required|in:Super Admin,Admin,Sales Manager,Sales Representative',
-            'status'     => 'required|in:Active,Inactive,Pending Accounts',
+            'last_name' => 'required|string|max:255',
+            'email' => 'required|email|unique:users,email,' . $user->id,
+            'role' => 'required|in:Super Admin,Admin,Sales Manager,Sales Representative',
+            'status' => 'required|in:Active,Inactive,Pending Accounts',
         ]);
 
         $currentUser = auth()->user();
@@ -105,13 +105,13 @@ class UserController extends Controller
 
         $user->update([
             'first_name' => $request->first_name,
-            'last_name'  => $request->last_name,
-            'email'      => $request->email,
-            'role'       => $request->role,
-            'status'     => $request->status,
+            'last_name' => $request->last_name,
+            'email' => $request->email,
+            'role' => $request->role,
+            'status' => $request->status,
         ]);
 
-        return redirect()->back()->with('success', 'User updated successfully.');
+        return redirect()->route('admin_access_user')->with('success', 'User updated successfully.');
     }
 
     // Delete user with RBAC protection
