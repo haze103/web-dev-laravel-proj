@@ -103,7 +103,7 @@ active
             </div>
             <div class="user-input">
                 <label for="contact-phone">Phone</label>
-                <input type="tel" id="contact-phone" class="side-panel-input-field" required name="phone_number" value="{{ $data->phone_number }}">
+                <input type="tel" id="contact-phone" class="side-panel-input-field" required name="phone_number" value="{{ $data->phone_number }}" minlength="10" maxlength="15" pattern="[0-9]{10,15}">
             </div>
             <div class="user-input">
                 <label for="contact-company-name">Company</label>
