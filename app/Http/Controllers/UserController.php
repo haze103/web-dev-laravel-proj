@@ -12,7 +12,7 @@ class UserController extends Controller
     public function index()
     {
         $users = User::all();
-        return view('admin_access_user', compact('users'));
+        return view('admin_access_user', ['users' => $users]);
     }
 
     // Store new user with RBAC and unique Super Admin enforcement
@@ -57,10 +57,11 @@ class UserController extends Controller
     }
 
     // Edit user
-    public function edit($id)
+    public function edit(User $user)
     {
-        $user = User::findOrFail($id);
-        return view('edit_user', compact('user'));
+        // dd($user);
+        // $user = User::findOrFail($id);
+        return view('admin_edit_user', compact('user'));
     }
 
     // Update user with RBAC restrictions

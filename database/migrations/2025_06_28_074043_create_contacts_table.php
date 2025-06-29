@@ -19,7 +19,7 @@ return new class extends Migration
             $table->string('phone_number', 30);
             $table->string('company');
             $table->string('position');
-            $table->foreignId('sales_representative_id')->constrained('users');
+            $table->foreignId('sales_representative_id')->nullable()->constrained('users')->onDelete('set null');
             $table->foreignId('created_by')->constrained('users');
         });
     }

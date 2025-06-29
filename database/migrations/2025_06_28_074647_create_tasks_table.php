@@ -17,7 +17,7 @@ return new class extends Migration
             $table->string('title');
             $table->date('due_date');
             $table->enum('status', ['pending', 'in progress', 'done']);
-            $table->foreignId('sales_representative_id')->constrained('users');
+            $table->foreignId('sales_representative_id')->nullable()->constrained('users')->onDelete('set null');
             $table->enum('priority', ['low', 'medium', 'high']);
         });
     }
