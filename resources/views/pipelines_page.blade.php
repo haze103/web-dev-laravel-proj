@@ -13,7 +13,7 @@
     <section class="main-content">
         <div class="headline">
             <h1>Pipelines</h1>
-            <div class="filter-items-container">
+            {{-- <div class="filter-items-container">
                 <i class="fa-regular fa-sliders" onclick="openDropDown(); event.stopPropagation();"></i>
                 <div class="filter-dropdown-menu">
                     <table class="filter-dropdown-menu-item">
@@ -45,7 +45,7 @@
                         </tr>
                     </table>
                 </div>
-            </div>
+            </div> --}}
         </div>
         <div class="pipelines-table">
             <div class="pipelines-new">
