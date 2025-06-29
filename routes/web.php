@@ -8,22 +8,22 @@ use App\Http\Controllers\LeadController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\TaskController;
 
-// 🔓 Public routes
+// Public routes
 Route::get('/contact', [PageController::class, 'contact'])->name('contact');
 
-// 🔐 Authenticated routes
+// Authenticated routes
 Route::middleware('auth')->group(function () {
-    // 🌐 Page views
+    // Page views
     Route::get('/dashboard', [PageController::class, 'dashboard'])->name('dashboard');
     Route::get('/pipelines', [PageController::class, 'pipelines'])->name('pipelines_page');
     Route::get('/leads', [PageController::class, 'leads'])->name('leads');
     Route::get('/contacts', [PageController::class, 'contacts'])->name('contact_page');
     Route::get('/tasks', [PageController::class, 'tasks'])->name('tasks');
 
-    // ✅ USERS (Display view from UserController with $users data)
+    // USERS (Display view from UserController with $users data)
     Route::get('/admin/users', [UserController::class, 'index'])->name('admin_access_user');
 
-    // ✅ UserController CRUD routes
+    // UserController CRUD routes
     Route::post('/admin/users/store', [UserController::class, 'store'])->name('admin.users.store');
     Route::get('/admin/users/{user}/edit', [UserController::class, 'edit'])->name('admin.users.edit');
     Route::put('/admin/users/{user}', [UserController::class, 'update'])->name('admin.users.update');
@@ -48,8 +48,15 @@ Route::middleware('auth')->group(function () {
     Route::delete('/api/delete/task/{task}', [TaskController::class, 'destroy'])->name('task.destroy');
 });
 
-// 🔑 Authentication routes
+// Authentication routes
 Auth::routes();
 
-// 🏠 Landing Page
+// Landing Page
 Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('landing_page');
+
+//ContactController CRUD routes
+Route::get('/contacts', [ContactController::class, 'index'])->name('contact_page');
+Route::post('/contacts', [ContactController::class, 'store'])->name('contact.store');
+Route::put('/contacts/{contact}', [ContactController::class, 'update'])->name('contact.update');
+Route::delete('/contacts/{contact}', [ContactController::class, 'destroy'])->name('contact.destroy');
+
