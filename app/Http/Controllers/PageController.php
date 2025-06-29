@@ -3,11 +3,12 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use App\Models\User;
 use App\Models\Lead;
 use App\Models\Contact;
 use App\Models\Task;
-
+use Carbon\Carbon;
 class PageController extends Controller
 {
     public function landingPage()
@@ -22,7 +23,37 @@ class PageController extends Controller
 
     public function dashboard()
     {
-        return view('dashboard');
+        $total_leads = Lead::count();
+        $leads_won = Lead::where('stage', '=', 'won')->count();
+        $leads_lost = Lead::where('stage', '=', 'lost')->count();
+        $leads_ongoing = Lead::whereIn('stage', ['new', 'contacted', 'proposal sent'])->count();
+        $assigned_leads = Lead::leftJoin('users as assignee', 'leads.assigned_to', '=', 'assignee.id')
+            ->select([
+                'assignee.first_name',
+                'assignee.last_name',
+                DB::raw('COUNT(*) as count'),
+            ])
+            ->groupBy('leads.assigned_to')
+            ->orderByDesc('count')
+            ->limit(10)
+            ->get();
+
+        $conversion = DB::table('leads')
+            ->selectRaw("strftime('%m', closing_date) as month, COUNT(*) as count") // use MONTH() if MySQL
+            ->where('stage', 'won')
+            ->whereYear('closing_date', Carbon::now()->year)
+            ->groupBy('month')
+            ->orderBy('month')
+            ->get();
+
+        return view('dashboard', [
+            'total_leads' => $total_leads,
+            'leads_won' => $leads_won,
+            'leads_lost' => $leads_lost,
+            'leads_ongoing' => $leads_ongoing,
+            'assigned_leads' => $assigned_leads,
+            'conversion' => $conversion
+        ]);
     }
 
     public function pipelines()
@@ -38,9 +69,9 @@ class PageController extends Controller
         return view('pipelines_page', [
             'status_new' => $status_new,
             'status_contacted' => $status_contacted,
-            'status_proposal_sent'=>$status_proposal_sent,
-            'status_won'=>$status_won,
-            'status_lost'=>$status_lost,
+            'status_proposal_sent' => $status_proposal_sent,
+            'status_won' => $status_won,
+            'status_lost' => $status_lost,
 
         ]);
     }
