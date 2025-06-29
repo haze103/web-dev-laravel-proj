@@ -110,6 +110,7 @@ class UserController extends Controller
             'role' => $request->role,
             'status' => $request->status,
         ]);
+        $user->syncRoles([$request->role]);
 
         return redirect()->route('admin_access_user')->with('success', 'User updated successfully.');
     }
