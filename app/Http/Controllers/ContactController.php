@@ -67,3 +67,4 @@ class ContactController extends Controller
         return redirect()->route('contact_page')->with('success', 'Contact deleted.');
     }
 }
+//m
