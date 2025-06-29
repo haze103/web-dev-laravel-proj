@@ -7,9 +7,9 @@
 @endsection
 
 @section('main_section')
-@section('pipeline_active')
-active
-@endsection
+    @section('pipeline_active')
+        active
+    @endsection
     <section class="main-content">
         <div class="headline">
             <h1>Pipelines</h1>
@@ -51,56 +51,66 @@ active
             <div class="pipelines-new">
                 <h2>New</h2>
                 <table class="pipelines-table-data" id="pipelines-new-data">
-                    <tr>
-                        <td>data</td>
-                    </tr>
-                    <tr>
-                        <td>data</td>
-                    </tr>
+                    @forelse ($status_new as $data)
+                        <tr>
+                            <td>{{ $data->company }}</td>
+                        </tr>
+
+                    @empty
+
+                    @endforelse
                 </table>
             </div>
             <div class="pipelines-contacted">
                 <h2>Contacted</h2>
                 <table class="pipelines-table-data" id="pipelines-contacted-data">
-                    <tr>
-                        <td>data</td>
-                    </tr>
-                    <tr>
-                        <td>data</td>
-                    </tr>
+                    @forelse ($status_contacted as $data)
+                        <tr>
+                            <td>{{ $data->company }}</td>
+                        </tr>
+
+                    @empty
+                        
+                    @endforelse
                 </table>
             </div>
             <div class="pipelines-proposal-sent">
                 <h2>Proposal Sent</h2>
                 <table class="pipelines-table-data" id="pipelines-proposal-data">
-                    <tr>
-                        <td>data</td>
-                    </tr>
-                    <tr>
-                        <td>data</td>
-                    </tr>
+                    @forelse ($status_proposal_sent as $data)
+                        <tr>
+                            <td>{{ $data->company }}</td>
+                        </tr>
+
+                    @empty
+                        
+                    @endforelse
                 </table>
             </div>
             <div class="pipelines-won">
                 <h2>Won</h2>
                 <table class="pipelines-table-data" id="pipelines-won-data">
-                    <tr>
-                        <td>data</td>
-                    </tr>
-                    <tr>
-                        <td>data</td>
-                    </tr>
+                    @forelse ($status_won as $data)
+                        <tr>
+                            <td>{{ $data->company }}</td>
+                        </tr>
+
+                    @empty
+                        
+                    @endforelse
                 </table>
             </div>
             <div class="pipelines-lost">
                 <h2>Lost</h2>
                 <table class="pipelines-table-data" id="pipelines-lost-data">
-                    <tr>
-                        <td>data</td>
-                    </tr>
-                    <tr>
-                        <td>data</td>
-                    </tr>
+                    @forelse ($status_lost as $data)
+                        <tr>
+                            <td>{{ $data->company }}</td>
+                        </tr>
+
+                    @empty
+                        
+                    @endforelse
                 </table>
             </div>
         </div>

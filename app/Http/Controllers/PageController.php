@@ -27,7 +27,22 @@ class PageController extends Controller
 
     public function pipelines()
     {
-        return view('pipelines_page');
+        $status_new = Lead::where('stage', '=', 'new')->get();
+        $status_contacted = Lead::where('stage', '=', 'contacted')->get();
+        $status_proposal_sent = Lead::where('stage', '=', 'proposal sent')->get();
+        $status_won = Lead::where('stage', '=', 'won')->get();
+        $status_lost = Lead::where('stage', '=', 'lost')->get();
+
+
+
+        return view('pipelines_page', [
+            'status_new' => $status_new,
+            'status_contacted' => $status_contacted,
+            'status_proposal_sent'=>$status_proposal_sent,
+            'status_won'=>$status_won,
+            'status_lost'=>$status_lost,
+
+        ]);
     }
 
     public function leads()
@@ -78,16 +93,16 @@ class PageController extends Controller
     public function tasks()
     {
         $tasks = Task::leftJoin('users as assignee', 'assignee.id', '=', 'tasks.sales_representative_id')
-        ->select([
-            'tasks.id',
-            'assignee.first_name as assigned_to_first_name',
-            'assignee.last_name as assigned_to_last_name',
-            'tasks.title',
-            'tasks.due_date',
-            'tasks.status',
-            'tasks.priority'
-        ])
-        ->get();
+            ->select([
+                'tasks.id',
+                'assignee.first_name as assigned_to_first_name',
+                'assignee.last_name as assigned_to_last_name',
+                'tasks.title',
+                'tasks.due_date',
+                'tasks.status',
+                'tasks.priority'
+            ])
+            ->get();
         $users = User::all();
         return view('tasks', ['tasks' => $tasks, 'users' => $users]);
     }
