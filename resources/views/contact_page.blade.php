@@ -86,6 +86,7 @@
         @unlessrole('Sales Representative')
             <form class="side-panel-container" method="post" action="{{ route('contact.store') }}" id="contact-form">
                 @csrf
+                @method('post')
                 <input type="hidden" name="contact_id" id="contact-id">
 
                 <h1 class="add-h1-side-panel">Add Contact</h1>
