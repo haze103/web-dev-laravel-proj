@@ -13,19 +13,13 @@ class ContactController extends Controller
      */
     public function index()
     {
-        //
+        $contacts = Contact::with(['salesRep', 'creator'])->get();
+        $users = User::where('role', 'Sales Representative')->get(); // adjust as needed
+        return view('contact_page', compact('contacts', 'users'));
     }
 
     /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
+     * Store a newly created contact.
      */
     public function store(Request $request)
     {
@@ -36,11 +30,12 @@ class ContactController extends Controller
             'company' => ['required'],
             'position' => ['required'],
             'sales_representative_id' => ['required', 'integer', 'exists:users,id'],
-            'created_by' => ['required', 'integer', 'exists:users,id']
         ]);
+
         $data['created_by'] = auth()->id();
+
         Contact::create($data);
-        return redirect()->route('contact_page');
+        return redirect()->route('contact_page')->with('success', 'Contact created.');
     }
 
     /**
@@ -52,8 +47,9 @@ class ContactController extends Controller
     }
 
     /**
-     * Show the form for editing the specified resource.
+     * Update the specified contact in storage.
      */
+
     public function edit(Contact $contact)
     {
         $data = Contact::leftJoin('users as creator', 'creator.id', '=', 'contacts.created_by')
@@ -73,14 +69,15 @@ class ContactController extends Controller
             ])
             ->first();
 
-        $users = User::all();
+        $contact->update($data);
 
-        return view('contact_edit', ['contact' => $contact, 'data' => $data, 'users' => $users]);
+        return view('contact_edit', ['contact' => $contact, 'data' => $data, 'users' => $users])->with('success', 'Contact updated.');
     }
 
     /**
-     * Update the specified resource in storage.
+     * Remove the specified contact from storage.
      */
+
     public function update(Request $request, Contact $contact)
     {
         $data = $request->validate([
@@ -101,6 +98,6 @@ class ContactController extends Controller
     public function destroy(Contact $contact)
     {
         $contact->delete();
-        return redirect()->route('contact_page');
+        return redirect()->route('contact_page')->with('success', 'Contact deleted.');
     }
 }

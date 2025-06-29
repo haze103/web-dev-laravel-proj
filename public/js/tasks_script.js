@@ -1,6 +1,6 @@
 document.addEventListener('DOMContentLoaded', () => {
 
-    // --- Menu Item Logic ---
+    // --- Menu Item Highlight Logic ---
     const currentPath = window.location.pathname;
     const menuItems = document.querySelectorAll('.side-menu .menu-item');
 
@@ -29,8 +29,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // --- Sidebar Logic ---
-
+    // --- Sidebar Task Logic ---
     const addTaskBtn = document.getElementById('addTaskBtn');
     const sidebarForm = document.getElementById('sidebarForm');
 
@@ -40,35 +39,16 @@ document.addEventListener('DOMContentLoaded', () => {
         const sidebarOverlay = document.getElementById('sidebarOverlay');
         const mainContent = document.querySelector('.main-content');
 
-        const sidebarHeaderH2 = sidebarForm.querySelector('.sidebar-header h2');
-        const currentUserP = document.getElementById('current-user');
         const titleInput = document.getElementById('title');
         const dueDateInput = document.getElementById('dueDate');
         const taskStatusSelect = document.getElementById('status');
         const linkedLeadSelect = document.getElementById('linkedLead');
         const prioritySelect = document.getElementById('priority');
-        const saveButton = sidebarForm.querySelector('.save-btn');
         const taskIdInput = document.getElementById('taskId');
 
         const editTaskButtons = document.querySelectorAll('.edit-task-btn');
 
-        function openSidebar(mode, taskData = {}) {
-
-
-            if (mode === 'add') {
-                
-            } else if (mode === 'edit') {
-
-            }
-
-            sidebarForm.classList.add('active');
-            sidebarOverlay.classList.add('active');
-            if (mainContent) mainContent.classList.add('sidebar-active');
-            document.body.style.overflow = 'hidden';
-        }
-
         function clearFormFields() {
-           
             titleInput.value = '';
             dueDateInput.value = '';
             taskStatusSelect.value = '';
@@ -85,6 +65,27 @@ document.addEventListener('DOMContentLoaded', () => {
             clearFormFields();
         }
 
+        function openSidebar(mode, taskData = {}) {
+            if (mode === 'add') {
+                sidebarForm.querySelector('h2').innerText = 'Add Task';
+                clearFormFields();
+            } else if (mode === 'edit') {
+                sidebarForm.querySelector('h2').innerText = 'Edit Task';
+                titleInput.value = taskData.title || '';
+                dueDateInput.value = taskData.dueDate || '';
+                taskStatusSelect.value = taskData.status || '';
+                linkedLeadSelect.value = taskData.linkedLead || '';
+                prioritySelect.value = taskData.priority || '';
+                if (taskIdInput) taskIdInput.value = taskData.id || '';
+            }
+
+            sidebarForm.classList.add('active');
+            sidebarOverlay.classList.add('active');
+            if (mainContent) mainContent.classList.add('sidebar-active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        // Open on Add
         if (addTaskBtn) {
             addTaskBtn.addEventListener('click', (event) => {
                 event.preventDefault();
@@ -92,6 +93,7 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         }
 
+        // Open on Edit
         editTaskButtons.forEach(button => {
             button.addEventListener('click', (event) => {
                 event.preventDefault();
@@ -109,9 +111,30 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         });
 
-        
+        // Cancel Button
+        if (cancelSidebarBtn) {
+            cancelSidebarBtn.addEventListener('click', (event) => {
+                event.preventDefault();
+                closeSidebar();
+            });
+        }
+
+        // Close button (X)
+        if (closeSidebarBtn) {
+            closeSidebarBtn.addEventListener('click', (event) => {
+                event.preventDefault();
+                closeSidebar();
+            });
+        }
+
+        // Clicking overlay closes sidebar
+        if (sidebarOverlay) {
+            sidebarOverlay.addEventListener('click', () => {
+                closeSidebar();
+            });
+        }
 
     } else {
-        console.error("Sidebar form element with ID 'sidebarForm' not found. Sidebar functionality may not work.");
+        console.error("Sidebar form element with ID 'sidebarForm' not found.");
     }
 });
