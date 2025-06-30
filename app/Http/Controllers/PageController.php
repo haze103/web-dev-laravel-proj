@@ -41,7 +41,7 @@ class PageController extends Controller
                 'assignee.last_name',
                 DB::raw('COUNT(*) as count'),
             ])
-            ->groupBy('leads.assigned_to')
+            ->groupBy('leads.assigned_to', 'assignee.first_name', 'assignee.last_name')
             ->orderByDesc('count')
             ->limit(10)
             ->get();
@@ -53,7 +53,6 @@ class PageController extends Controller
             ->groupBy('month')
             ->orderBy('month')
             ->get();
-
 
         return view('dashboard', [
             'total_leads' => $total_leads,

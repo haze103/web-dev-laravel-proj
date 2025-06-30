@@ -281,11 +281,11 @@ aside {
     border: 1.5px solid #000;
     padding: 10px;
     text-align: left;
-    font-size: 18px;
+    font-size: 1rem;
 }
 
 .data-table th {
-    font-size: 25px;
+    font-size: 1rem;
     font-weight: bold;
     text-align: center;
 }
